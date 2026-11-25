@@ -1,0 +1,38 @@
+titulo: "Fotos diversas"
+descricao: "Trabalho, festas, viagens e o dia a dia nas cidades da família."
+ordem: 12
+fotos:
+  - imagem: /img/fotos/diversas/alderico-e-mario.jpg
+    legenda: "Alderico e Mario filhos de Graciano e Albino Camozzato em Porto Alegre"
+  - imagem: /img/fotos/diversas/charretedealbinocamozzato.jpg
+    legenda: "Charrete de Albino Camozzato 1921"
+  - imagem: /img/fotos/diversas/alderico-teresinha-anaildes-redencao.jpg
+    legenda: "Alderico Camozzato Teresinha Rebeschini e Anaildes Fraga da Motta em Porto Alegre"
+  - imagem: /img/fotos/diversas/colheitadetrigo.jpg
+    legenda: "Colheita de Trigo - Ernesto Camozzato Antonio Prado"
+  - imagem: /img/fotos/diversas/banda-furiosa.jpg
+    legenda: "Banda Furiosa de Antonio Prado - 1915"
+  - imagem: /img/fotos/diversas/graciano-bruno.jpg
+    legenda: "Graciano e Bruno Camozzato em Sananduva"
+  - imagem: /img/fotos/diversas/camozzato-in-fest.jpg
+    legenda: "Filhos de José Camozzato no I Camozzato in Fest em Passo Fundo"
+  - imagem: /img/fotos/diversas/graciano-camozzato.jpg
+    legenda: "Graciano Camozzato candidato em Lagoa Vermelha"
+  - imagem: /img/fotos/diversas/moinho-graciano-camozzato.jpg
+    legenda: "Moinho de Graciano Camozzato em Sananduva"
+  - imagem: /img/fotos/diversas/onibus-nova-prata-pato-branco.jpg
+    legenda: "Ônibus que fazia linha de Nova Prata até Pato Branco"
+  - imagem: /img/fotos/diversas/angelo-joao.jpg
+    legenda: "Ângelo João Camozzato com sua \"taquari\" em Antonio Prado"
+  - imagem: /img/fotos/diversas/rio-forquilha.jpg
+    legenda: "Verão no Rio Forquilha - Sananduva"
+  - imagem: /img/fotos/diversas/tiro-alvo.jpg
+    legenda: "Tiro ao Alvo em Sananduva"
+  - imagem: /img/fotos/diversas/robertomafessoniealbinocamozzato.jpg
+    legenda: "Roberto Mafessoni e filhos com Albino Camozzato"
+  - imagem: /img/fotos/diversas/albiinocamozzato.jpg
+    legenda: "Albino Camozzato procurando ouro"
+  - imagem: /img/fotos/diversas/churrascosananduva.jpg
+    legenda: "Churrasco em Sananduva"
+  - imagem: /img/fotos/diversas/albinoestradapalmitos.jpg
+    legenda: "Albino Camozzato construindo estrada Palmitos-Miraguai 1939"

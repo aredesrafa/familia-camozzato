@@ -2,6 +2,13 @@ import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { z } from 'astro/zod';
 
+// Uma foto numa lista (galerias, histórias, cidades). Sem "descricao", a legenda serve de texto alternativo.
+const foto = z.object({
+  imagem: z.string(),
+  legenda: z.string().optional(),
+  descricao: z.string().optional(),
+});
+
 // Cada coleção corresponde a uma pasta em src/content e a uma coleção no CMS (public/admin/config.yml).
 
 const historias = defineCollection({
@@ -15,6 +22,7 @@ const historias = defineCollection({
     imagem_alt: z.string().optional(),
     ordem: z.number().default(99),
     destaque: z.boolean().default(false),
+    fotos: z.array(foto).optional(),
   }),
 });
 
@@ -27,6 +35,27 @@ const cidades = defineCollection({
     resumo: z.string(),
     imagem: z.string().optional(),
     imagem_alt: z.string().optional(),
+    fotos: z.array(foto).optional(),
+  }),
+});
+
+const galerias = defineCollection({
+  loader: glob({ base: './src/content/galerias', pattern: '**/*.{yml,yaml}' }),
+  schema: z.object({
+    titulo: z.string(),
+    descricao: z.string().optional(),
+    ordem: z.number().default(99),
+    capa: z.string().optional(),
+    fotos: z.array(foto).default([]),
+  }),
+});
+
+const paginas = defineCollection({
+  loader: glob({ base: './src/content/paginas', pattern: '**/*.md' }),
+  schema: z.object({
+    titulo: z.string(),
+    resumo: z.string(),
+    ordem: z.number().default(99),
   }),
 });
 
@@ -89,4 +118,4 @@ const pessoas = defineCollection({
   }),
 });
 
-export const collections = { historias, cidades, nucleos, marcos, pessoas };
+export const collections = { historias, cidades, galerias, paginas, nucleos, marcos, pessoas };

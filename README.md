@@ -19,14 +19,32 @@ npm run build    # gera dist/
 | `src/data/home.json` | Textos, foto e números da página inicial | Página inicial |
 | `src/content/historias/` | Histórias (perfis de Destaques) | Histórias |
 | `src/content/cidades/` | Cidades importantes | Lugares |
+| `src/content/galerias/` | Álbum de fotos: uma galeria por arquivo `.yml`, com a lista de fotos e legendas | Álbum de fotos |
+| `src/content/paginas/` | Páginas de A família (origem do nome, imigração, primeiros imigrantes), em `/familia/` | A família (páginas) |
 | `src/content/nucleos/` | Os quatro núcleos imigrantes | Núcleos imigrantes |
 | `src/content/marcos/` | Marcos da linha do tempo | Linha do tempo |
 | `src/content/pessoas/` | Pessoas da árvore genealógica (pai, mãe e cônjuges apontam para o arquivo da outra pessoa). Relações montadas em `src/arvore.ts`; páginas `/arvore/` e `/pessoas/[id]/` | Árvore — pessoas |
-| `public/img/` | Imagens enviadas pelo CMS | Mídia |
+| `public/img/` | Imagens enviadas pelo CMS (`fotos/<galeria>/`, `historias/`, `cidades/`, `familia/` vieram do site antigo) | Mídia |
+| `public/docs/` | Documentos em PDF (lista de passageiros do Hohenzollern) | — |
 
 Os campos de cada coleção estão em `src/content.config.ts` e espelhados em `.pages.yml`. Ao mudar um, mude o outro.
 
 O conteúdo inicial foi gerado a partir da extração do site antigo (pasta do projeto no Dropbox, `conteudo-extraido/`).
+
+Histórias e cidades aceitam uma lista opcional `fotos` (imagem, legenda e descrição), mostrada abaixo do texto com ampliação ao clicar.
+
+## Imagens
+
+As imagens do site antigo foram otimizadas por `scripts/otimizar-imagens.mjs`: lado maior de até 1600 px (sem ampliar as menores), rotação corrigida, sem metadados, em JPEG (mozjpeg, qualidade 80). Os GIFs de mapas e gravuras viraram PNG. A lista de origem → destino está em `scripts/migracao-acervo.json`.
+
+```bash
+# Refazer a migração a partir do espelho do site antigo
+node scripts/otimizar-imagens.mjs --manifesto scripts/migracao-acervo.json --origem <pasta site-atual>
+# Otimizar no lugar fotos grandes enviadas pelo CMS
+node scripts/otimizar-imagens.mjs public/img/fotos
+```
+
+As páginas leem largura e altura de cada imagem no build (`src/utils/imagens.mjs`), para a página não "pular" enquanto as fotos carregam.
 
 ## Design
 

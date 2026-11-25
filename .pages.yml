@@ -71,6 +71,16 @@ content:
       - { name: imagem_alt, label: Descrição da imagem, type: text }
       - { name: ordem, label: Ordem, type: number, default: 99 }
       - { name: destaque, label: Mostrar na página inicial, type: boolean, default: false }
+      - name: fotos
+        label: Mais fotos
+        type: object
+        list:
+          collapsible: { collapsed: true, summary: "{fields.legenda}" }
+        description: "Fotos extras, mostradas abaixo do texto."
+        fields:
+          - { name: imagem, label: Foto, type: image, required: true }
+          - { name: legenda, label: Legenda, type: string }
+          - { name: descricao, label: Descrição para leitores de tela, type: text, description: "Opcional. Se ficar vazia, a legenda é usada." }
       - { name: body, label: Texto, type: rich-text, options: { format: markdown } }
 
   - name: cidades
@@ -93,7 +103,66 @@ content:
       - { name: resumo, label: Resumo, type: text, required: true }
       - { name: imagem, label: Imagem, type: image }
       - { name: imagem_alt, label: Descrição da imagem, type: text }
+      - name: fotos
+        label: Mais fotos
+        type: object
+        list:
+          collapsible: { collapsed: true, summary: "{fields.legenda}" }
+        description: "Fotos extras, mostradas abaixo do texto."
+        fields:
+          - { name: imagem, label: Foto, type: image, required: true }
+          - { name: legenda, label: Legenda, type: string }
+          - { name: descricao, label: Descrição para leitores de tela, type: text, description: "Opcional. Se ficar vazia, a legenda é usada." }
       - { name: body, label: Texto, type: rich-text, options: { format: markdown } }
+
+  - name: galerias
+    label: Álbum de fotos
+    type: collection
+    path: src/content/galerias
+    format: yaml
+    filename:
+      template: "{primary}.yml"
+      field: create
+    view:
+      fields: [titulo, ordem]
+      primary: titulo
+      sort: [ordem, titulo]
+      default: { sort: ordem, order: asc }
+    fields:
+      - { name: titulo, label: Título, type: string, required: true }
+      - { name: descricao, label: Descrição, type: text }
+      - { name: ordem, label: Ordem, type: number, default: 99 }
+      - { name: capa, label: Foto de capa, type: image, description: "Opcional. Se ficar vazia, a primeira foto da lista é a capa." }
+      - name: fotos
+        label: Fotos
+        type: object
+        list:
+          collapsible: { collapsed: true, summary: "{fields.legenda}" }
+        description: "Envie fotos de até 1600 px no lado maior. As fotos aparecem nesta ordem."
+        fields:
+          - { name: imagem, label: Foto, type: image, required: true }
+          - { name: legenda, label: Legenda, type: string, description: "Quem aparece, onde e quando." }
+          - { name: descricao, label: Descrição para leitores de tela, type: text, description: "Opcional. Se ficar vazia, a legenda é usada." }
+
+  # O texto das páginas é Markdown puro (campo de código) para não estragar as tabelas.
+  - name: paginas
+    label: A família (páginas)
+    type: collection
+    path: src/content/paginas
+    format: yaml-frontmatter
+    filename:
+      template: "{primary}.md"
+      field: create
+    view:
+      fields: [titulo, ordem]
+      primary: titulo
+      sort: [ordem, titulo]
+      default: { sort: ordem, order: asc }
+    fields:
+      - { name: titulo, label: Título, type: string, required: true }
+      - { name: resumo, label: Resumo, type: text, required: true, description: "Aparece abaixo do título e na página A família." }
+      - { name: ordem, label: Ordem, type: number, default: 99 }
+      - { name: body, label: Texto (Markdown), type: code, options: { format: markdown } }
 
   - name: nucleos
     label: Núcleos imigrantes

@@ -1,0 +1,57 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+
+const paginas = (await getCollection('paginas')).sort((a, b) => a.data.ordem - b.data.ordem);
+const nucleos = (await getCollection('nucleos')).sort((a, b) => a.data.ordem - b.data.ordem);
+---
+<Base title="A família" description="A origem do sobrenome Camozzato, a imigração italiana e os primeiros imigrantes da família no Brasil.">
+  <header class="page-head">
+    <div class="wrap">
+      <h1>A família</h1>
+      <p class="lead">Todos os Camozzato, Camuzzato e Camossato desta história vêm de Montebelluna, no Vêneto. Aqui estão a origem do nome, o contexto da imigração e os registros de chegada ao Brasil.</p>
+    </div>
+  </header>
+  <div class="wrap block">
+    <ol class="list" role="list">
+      {paginas.map((p) => (
+        <li>
+          <a href={`/familia/${p.id}/`}>
+            <h2>{p.data.titulo}</h2>
+            <p>{p.data.resumo}</p>
+          </a>
+        </li>
+      ))}
+    </ol>
+  </div>
+  <section class="band paper">
+    <div class="wrap block">
+      <div class="head"><h2>Os quatro núcleos</h2></div>
+      <div class="lines">
+        {nucleos.map((n) => (
+          <article class="line-card">
+            <h3>{n.data.titulo}</h3>
+            <p class="where">{n.data.lugares}</p>
+            <p>{n.body}</p>
+            <p class="root">{n.data.raiz}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .list { list-style: none; margin: 0; padding: 0; display: grid; gap: 20px; }
+  @media (min-width: 900px) { .list { grid-template-columns: repeat(3, 1fr); gap: 24px; } }
+  .list a { display: block; height: 100%; background: var(--white); border: 1px solid var(--line); border-radius: 8px; padding: 24px 26px; text-decoration: none; color: inherit; transition: border-color .15s; }
+  .list a:hover { border-color: var(--navy); }
+  .list h2 { font-size: 24px; margin-bottom: 10px; }
+  .list p { font-size: 16px; color: var(--ink-soft); }
+  .lines { display: grid; gap: 20px; }
+  @media (min-width: 768px) { .lines { grid-template-columns: repeat(2, 1fr); gap: 24px; } }
+  .line-card { background: var(--white); border: 1px solid var(--line); border-radius: 8px; padding: 26px 26px 22px; }
+  .line-card .where { font-size: 15px; color: var(--ink-mute); margin: 4px 0 14px; }
+  .line-card p { font-size: 16px; color: var(--ink-soft); }
+  .line-card .root { border-top: 1px solid var(--line); margin-top: 18px; padding-top: 12px; font-size: 14px; color: var(--ink-mute); }
+</style>

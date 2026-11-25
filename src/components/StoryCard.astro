@@ -1,14 +1,16 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 interface Props { story: CollectionEntry<'historias'> }
+import { medidas } from '../utils/imagens.mjs';
 const { story } = Astro.props;
 const d = story.data;
 const href = `/historias/${story.id}/`;
+const m = await medidas(d.imagem);
 ---
 <article class="story">
   {d.imagem && (
     <a href={href} tabindex="-1" aria-hidden="true">
-      <figure class="frame"><img src={d.imagem} alt={d.imagem_alt ?? ''} loading="lazy" /></figure>
+      <figure class="frame"><img src={d.imagem} alt={d.imagem_alt ?? ''} width={m.width} height={m.height} loading="lazy" /></figure>
     </a>
   )}
   {d.periodo && <p class="meta">{d.periodo}</p>}

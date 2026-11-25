@@ -1,0 +1,29 @@
+titulo: "Irmãos e primos"
+ordem: 5
+fotos:
+  - imagem: /img/fotos/irmaos-e-primos/angelina-jose.jpg
+    legenda: "Jose e Angelina filhos de Angelo Camozzato"
+  - imagem: /img/fotos/irmaos-e-primos/aldemiragracianofrei.jpg
+    legenda: "Aldemira, Frei Atilio e Graciano Galvan"
+  - imagem: /img/fotos/irmaos-e-primos/luizolivomario.jpg
+    legenda: "Luiz, Olivo e Mario filhos de Albino Camozzato"
+  - imagem: /img/fotos/irmaos-e-primos/verginia-e-leticia.jpg
+    legenda: "Vergínia e Letícia, filhas de Francisco Camuzzato"
+  - imagem: /img/fotos/irmaos-e-primos/teresinha-e-lurdes.jpg
+    legenda: "Terezinha e Lurdes, filhas de Albino Camozzato"
+  - imagem: /img/fotos/irmaos-e-primos/raimundo-e-angelica.jpg
+    legenda: "Raimundo e Angelica Maria, filhas de Francisco"
+  - imagem: /img/fotos/irmaos-e-primos/raimundo-e-angelica2.jpg
+    legenda: "Raimundo e Angelica Maria filhos de Francisco 2"
+  - imagem: /img/fotos/irmaos-e-primos/conceicao-e-albino.jpg
+    legenda: "Conceição e Albino nas bodas de 60 anos casados Albino"
+  - imagem: /img/fotos/irmaos-e-primos/conceicao-e-angelina.jpg
+    legenda: "Conceição e Angelina filhas de Angelo Camozzato"
+  - imagem: /img/fotos/irmaos-e-primos/joseeluiz.jpg
+    legenda: "José e Luiz filhos de Angelo Camozzato"
+  - imagem: /img/fotos/irmaos-e-primos/ignez-e-mariaolimpia.jpg
+    legenda: "Ignez e Maria Olimpia filhas de Angelo Camozzato"
+  - imagem: /img/fotos/irmaos-e-primos/primospatobranco.jpg
+    legenda: "Primos de Pato Branco"
+  - imagem: /img/fotos/irmaos-e-primos/ernestoangelofelix.jpg
+    legenda: "Ernesto, Angelo e Félix, filhos Atilio Camozzato Antonio Prado"

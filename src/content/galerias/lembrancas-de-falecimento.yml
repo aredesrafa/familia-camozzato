@@ -1,0 +1,22 @@
+titulo: "Lembranças de falecimento"
+descricao: "Santinhos distribuídos nas missas de sétimo dia, com foto, datas e uma oração."
+ordem: 13
+fotos:
+  - imagem: /img/fotos/lembrancas-de-falecimento/judith-ruzarin.jpg
+    legenda: "Judith Ruzarin esposa de Angelo Camozzato"
+  - imagem: /img/fotos/lembrancas-de-falecimento/jacintho-mafessoni.jpg
+    legenda: "Jacinto Mafessoni esposo Elia Camozzato"
+  - imagem: /img/fotos/lembrancas-de-falecimento/luciano-galvan.jpg
+    legenda: "Luciano Galvan filho de Angelina Camozzato"
+  - imagem: /img/fotos/lembrancas-de-falecimento/cerilo-ruzzarin.jpg
+    legenda: "Cerillo Ruzzarin irmão de Giudita Esposa Angelo Camozzato"
+  - imagem: /img/fotos/lembrancas-de-falecimento/filha-e-neta-luiz-e-rosa.jpg
+    legenda: "Maria Helena Camozzato e Milena filha e neta de Luiz Camozzato e Rosa Begnini"
+  - imagem: /img/fotos/lembrancas-de-falecimento/iracy-camozzato.jpg
+    legenda: "Iracy Camozzato filho de Máximo Camozzato"
+  - imagem: /img/fotos/lembrancas-de-falecimento/amaliacamozzato.jpg
+    legenda: "Amália Camozzato, imigrante filha de Giuseppe Camozzato"
+  - imagem: /img/fotos/lembrancas-de-falecimento/mariavanzin.jpg
+    legenda: "Maria Vanzin filha de Amalia Camozzato"
+  - imagem: /img/fotos/lembrancas-de-falecimento/joaoceron.jpg
+    legenda: "João Ceron esposo de Maria Vanzin"

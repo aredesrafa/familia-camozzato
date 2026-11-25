@@ -62,3 +62,21 @@ figcaption { font-size: 13px; color: var(--ink-mute); padding: 10px 2px 0; line-
 .prose p { margin: 0 0 1.1em; color: var(--ink-soft); }
 .prose h2, .prose h3 { margin: 1.6em 0 .6em; }
 .prose a { color: var(--navy); }
+
+/* Texto corrido: listas, citações, tabelas e figuras (páginas da família e histórias) */
+.prose ul, .prose ol { margin: 0 0 1.1em; padding-left: 1.3em; color: var(--ink-soft); }
+.prose li { margin: .2em 0; }
+.prose li > ul, .prose li > ol { margin: .2em 0 0; }
+.prose blockquote { margin: 0 0 1.1em; padding: 2px 0 2px 20px; border-left: 3px solid var(--line); font-style: italic; }
+.prose blockquote p { margin-bottom: .6em; }
+.prose figure.figura { margin: 1.6em 0; }
+.prose figure.figura img { height: auto; background: var(--white); border: 1px solid var(--line); padding: 8px; }
+/* Tabelas largas rolam dentro do próprio bloco, sem alargar a página no celular. */
+.prose table, .tabela-rolavel { display: block; max-width: 100%; overflow-x: auto; margin: 0 0 1.4em; }
+.prose table { width: max-content; border-collapse: collapse; font-size: 15px; line-height: 1.4; }
+.tabela-rolavel table { display: table; margin: 0; overflow: visible; }
+.prose th, .prose td { border: 1px solid var(--line); padding: 7px 10px; text-align: left; vertical-align: top; background: var(--white); }
+.prose th { background: var(--paper); color: var(--navy); font-weight: 600; }
+.prose td[align="right"], .prose th[align="right"] { text-align: right; }
+.prose table.lotes td { font-size: 13px; text-align: center; vertical-align: middle; min-width: 92px; }
+.prose table.lotes td.destaque { background: var(--paper); color: var(--accent); font-weight: 600; }

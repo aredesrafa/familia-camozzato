@@ -1,0 +1,37 @@
+titulo: "Retratos individuais"
+ordem: 11
+fotos:
+  - imagem: /img/fotos/individuais/atiliobuselato.jpg
+    legenda: "Atilio Buselato"
+  - imagem: /img/fotos/individuais/albinamarin2.jpg
+    legenda: "Albina Marin"
+  - imagem: /img/fotos/individuais/angelocamozzato.jpg
+    legenda: "Angelo Camozzato-1938"
+  - imagem: /img/fotos/individuais/ignezcamozzato.jpg
+    legenda: "Ignez Camozzato filha Albino"
+  - imagem: /img/fotos/individuais/judithruzarin.jpg
+    legenda: "Judith Ruzarin, esposa Angelo Camozzato 1938"
+  - imagem: /img/fotos/individuais/gracianocamozzato.jpg
+    legenda: "Graciano Camozzato-1938"
+  - imagem: /img/fotos/individuais/albinamarin.jpg
+    legenda: "Albina Marin, esposa Graciano"
+  - imagem: /img/fotos/individuais/josecamozzato.jpg
+    legenda: "José Camozzato - 1929"
+  - imagem: /img/fotos/individuais/eliacamozzato.jpg
+    legenda: "Elia Camozzato"
+  - imagem: /img/fotos/individuais/valentimcamuzzato.jpg
+    legenda: "Valentin Camuzzato, filho de Pedro"
+  - imagem: /img/fotos/individuais/pierinacaldato.jpg
+    legenda: "Pierina Caldato, esposa de Antonio Camozzato Pato Branco"
+  - imagem: /img/fotos/individuais/arlindogazola.jpg
+    legenda: "Arlindo Gazola, filho de Ignez Camozzato e Antonio Gazola"
+  - imagem: /img/fotos/individuais/joaocamuzzato.jpg
+    legenda: "João Camuzzato, filho de Francisco Camuzzato"
+  - imagem: /img/fotos/individuais/jacinthomafessoni.jpg
+    legenda: "Jacintho Mafessoni, esposo de elia Camozzato"
+  - imagem: /img/fotos/individuais/uldericocamozzato.jpg
+    legenda: "Ulderico Camozzato filho Albino na IBM"
+  - imagem: /img/fotos/individuais/victorcamozzato2.jpg
+    legenda: "Victor Camozzato"
+  - imagem: /img/fotos/individuais/victorcamozzato3.jpg
+    legenda: "Victor Camozzato com amigos em Sananduva"

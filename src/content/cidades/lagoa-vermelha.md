@@ -12,5 +12,3 @@ Casado com Josefina Cassol, tiveram 9 filhos, Osvaldo Pedro, Terezinha, Iracy, A
 Lagoa Vermelha ao longo dos anos sofreu a perda de muitos distritos por movimentos emancipancionistas. Veranópolis, Nova Prata, que depois deu origem a Nova Bassano e Nova Araçá, Guabiju, São Jorge, Protásio Alves, Vista Alegre do Prata, Sananduva, que depois deu origem a Machadinho e São José do Ouro e ainda Paim Filho, Ibiaçá, Maximiliano de Almeida,Barracão, Cacique Doble, Ibiraiaras, São João da Urtiga, André da Rocha, Caseiros, Tupanci, Santo Expedito e Capão Bonito do Sul. A busca por certidões de nascimentos e óbitos eventualmente pode ser bastante difícil por conta desse grande número de divisões territoriais. Alguns Camozzatos nascidos em distritos na época e hoje cidades tem como cidade natal Lagoa Vermelha.
 
 Conheça mais de Lagoa Vermelha:
-
-Localização da cidade de Lagoa Vermelha no mapa do estado do Rio Grande do Sul

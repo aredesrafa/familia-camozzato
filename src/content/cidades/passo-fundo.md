@@ -3,6 +3,8 @@ nome: "Passo Fundo"
 regiao: "RS"
 ordem: 5
 resumo: "A presença dos Camozzato em Passo Fundo se deu a partir do ano de 1959, quando José Camozzato, filho de Angelo e neto de Giuseppe, resolveu acompanhar os filhos que tiveram que sair de Sananduva para estudar. Leia o…"
+imagem: "/img/cidades/passo-fundo-localizacao.jpg"
+imagem_alt: "Localização de Passo Fundo no Rio Grande do Sul"
 ---
 
 A presença dos Camozzato em Passo Fundo se deu a partir do ano de 1959, quando José Camozzato, filho de Angelo e neto de Giuseppe, resolveu acompanhar os filhos que tiveram que sair de Sananduva para estudar. Leia o livro IDOS TEMPOS, disponível no próprio site, onde José conta em detalhes muitas passagens da sua vida. Nessa época a família de José já estava formada, com dez filhos e quatro estudando em Passo Fundo. Até hoje, a presença da família na cidade se dá pelos descendentes de José. Entretanto, em época posterior e em menor número, a família de Américo Camozzato também ali se estabeleceu.
@@ -34,5 +36,3 @@ Conheça mais sobre Passo Fundo:
 (acesse o sítio da Prefeitura Municipal)
 
 (acesse o Portal Passo Fundo Tchê, com informações variadas)
-
-Localização de Passo Fundo no Rio Grande do Sul

@@ -9,6 +9,9 @@ imagem: /img/benjamin-ophelia.jpg
 imagem_alt: Retrato em sépia de Benjamin Camozato e Ophelia Fontoura, lado a lado
 ordem: 2
 destaque: true
+fotos:
+  - imagem: /img/historias/benjamin-camozato-retrato.jpg
+    legenda: "Benjamin Camozato junto a um mapa (imagem publicada no Jornal do Povo, de Cachoeira do Sul)"
 ---
 Benjamin Celestino Camozato não chegou a ser propriamente um homem de cinema, atividade que ele explorou apenas esporadicamente, durante tão somente dois anos: 1923 e 1924. Ele nasceu em Porto Alegre a 19.05.1885, dez anos antes da invenção do cinema, e faleceu em Porto Alegre a 04.05.1964. Era filho de Oscar Pereira da Costa, brasileiro, e de Isabel Vittoria Camozato, italiana. Desde os três anos, teve como padastro o Engenheiro Arnaldo Muniz Bittencourt.
 

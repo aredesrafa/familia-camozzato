@@ -78,7 +78,7 @@ const rotas = [
 
   <section class="band" id="nucleos">
     <div class="wrap block">
-      <div class="head"><h2>Os quatro núcleos</h2></div>
+      <div class="head"><h2>Os quatro núcleos</h2><a class="link" href="/familia/">Origem do nome e imigração</a></div>
       <div class="lines">
         {nucleos.map((n) => (
           <article class="line-card">
@@ -127,6 +127,7 @@ const rotas = [
           <p class="eyebrow">Do acervo · em preparação</p>
           <h2>{home.livro_titulo}</h2>
           <p class="lead">{home.livro_texto}</p>
+          <p class="acervo-fotos"><a class="btn btn-outline" href="/fotos/">Ver o álbum de fotos</a></p>
         </div>
       </div>
     </div>
@@ -186,6 +187,7 @@ const rotas = [
   .book .frame { max-width: 260px; padding: 8px; }
   .book h2 { margin-top: 8px; }
   .book .lead { margin-top: 14px; max-width: 36em; }
+  .acervo-fotos { margin-top: 24px; }
 
   .cta { background: var(--navy); color: var(--cream); }
   .cta .wrap { display: flex; flex-wrap: wrap; gap: 24px 48px; align-items: center; justify-content: space-between; padding-top: 52px; padding-bottom: 52px; }
