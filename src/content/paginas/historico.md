@@ -1,9 +1,14 @@
 ---
-titulo: A imigração italiana
+titulo: Histórico da imigração italiana
 resumo: Por que cerca de um milhão de italianos vieram para o Brasil entre 1880 e 1890, de onde saíram e os registros mais antigos dos Camozzato na Itália.
 ordem: 2
 ---
 A vinda para o Brasil dos Camozzato se deu num processo amplo de imigração apoiado pelo governo italiano. Naquele período, 1880/1890, aproximadamente um milhão de italianos emigraram para o Brasil. Eram levas e levas de famílias buscando uma nova vida.
+
+<figure class="figura">
+  <img src="/img/familia/mapa-veneto.jpg" alt="Mapa da região do Vêneto com as principais cidades e ferrovias; Montebelluna fica entre Castelfranco e Treviso" width="481" height="516">
+  <figcaption>Mapa localizando a região do Vêneto, de onde vieram os Camozzato. Montebelluna está bem próximo de Treviso</figcaption>
+</figure>
 
 ## Causas da imigração
 
@@ -123,9 +128,3 @@ Observação: Dos filhos de Giovanni, só temos informações sobre Gaetano até
         - **5** Tomaso Camozzato
           - **6** Angelo Camozzato
         - **5** Quinto Camozzato
-
-
-<figure class="figura">
-  <img src="/img/familia/mapa-veneto.jpg" alt="Mapa da região do Vêneto" width="481" height="516" loading="lazy" decoding="async">
-  <figcaption>Mapa localizando a região do Vêneto, de onde vieram os Camozzato. Montebelluna está bem próximo de Treviso</figcaption>
-</figure>

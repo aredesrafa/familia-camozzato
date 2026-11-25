@@ -78,5 +78,11 @@ figcaption { font-size: 13px; color: var(--ink-mute); padding: 10px 2px 0; line-
 .prose th, .prose td { border: 1px solid var(--line); padding: 7px 10px; text-align: left; vertical-align: top; background: var(--white); }
 .prose th { background: var(--paper); color: var(--navy); font-weight: 600; }
 .prose td[align="right"], .prose th[align="right"] { text-align: right; }
+/* Tabela com barras (montadas por script em /familia/[id]): valor sobre uma barra proporcional */
+.prose table.barras { font-size: 16px; }
+.prose table.barras td:last-child { min-width: min(320px, 55vw); text-align: right; font-variant-numeric: tabular-nums;
+  background: linear-gradient(to right, rgba(15, 60, 99, .13) var(--p, 0%), var(--white) var(--p, 0%)); }
+.prose table.barras tr.maior td:last-child { background: linear-gradient(to right, rgba(163, 46, 41, .22) var(--p, 0%), var(--white) var(--p, 0%)); color: var(--accent); font-weight: 600; }
+.prose table.barras tr.maior td:first-child { color: var(--accent); font-weight: 600; }
 .prose table.lotes td { font-size: 13px; text-align: center; vertical-align: middle; min-width: 92px; }
 .prose table.lotes td.destaque { background: var(--paper); color: var(--accent); font-weight: 600; }

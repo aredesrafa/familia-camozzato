@@ -15,11 +15,6 @@ const isCurrent = (href: string) => !href.startsWith('/#') && path.startsWith(hr
 <header class="site">
   <div class="wrap bar">
     <a class="brand" href="/" aria-label="Família Camozzato — início">
-      <svg width="34" height="40" viewBox="0 0 34 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
-        <path d="M12 38 C11 28 10 18 11 11 C12 5 15 2 18 3 C20 4 19.5 7 17.5 7.5" />
-        <path d="M22 38 C23 28 24 18 23 11 C22.5 7 24 4.5 26.5 4.6 C28.6 4.8 28.6 7.4 26.8 8" />
-        <path d="M12.6 22 h8.8 M12.2 28 h9.6" stroke-width="1" opacity=".5" />
-      </svg>
       <span><span class="brand-name">Família <em>Camozzato</em></span><span class="brand-sub">CAMUZZATO · CAMOSSATO</span></span>
     </a>
     <nav class="main" aria-label="Principal">
@@ -47,7 +42,6 @@ const isCurrent = (href: string) => !href.startsWith('/#') && path.startsWith(hr
   header.site { background: var(--cream); border-bottom: 1px solid var(--line); position: relative; z-index: 10; }
   .bar { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 84px; }
   .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--navy); }
-  .brand svg { flex: none; }
   .brand-name { font-size: 26px; line-height: 1.05; white-space: nowrap; }
   .brand-name em { font-style: italic; }
   .brand-sub { display: block; font-size: 12px; color: var(--ink-mute); letter-spacing: .08em; margin-top: 3px; }
