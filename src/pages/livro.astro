@@ -1,0 +1,52 @@
+---
+import Base from '../layouts/Base.astro';
+import LivroDownloads from '../components/LivroDownloads.astro';
+import home from '../data/home.json';
+---
+<Base title="Idos Tempos — o livro" description="Baixe o livro Idos Tempos, memórias de José Camozzato, em EPUB (celular e leitores de e-book) ou PDF.">
+  <header class="page-head">
+    <div class="wrap">
+      <p class="meta"><a class="link" href="/fotos/">Acervo</a> · Livro</p>
+      <h1>Idos Tempos</h1>
+      <p class="lead">Memórias de José Camozzato, escritas em 1984 e impressas em Passo Fundo em 1986.</p>
+    </div>
+  </header>
+
+  <div class="wrap block livro">
+    <figure class="frame capa"><img src={home.livro_capa} alt="Capa do livro Idos Tempos — Memórias de José Camozzato, com foto de um senhor de chapéu segurando uma espingarda" width="390" height="640" /></figure>
+    <div class="texto">
+      <p class="lead">José (Giuseppe) Camozzato, filho de Angelo, nasceu em Antonio Prado em 1905. Neste livro ele conta a vida na colônia, a infância entre a roça e a bodega do pai e a mudança da família para Sananduva. É o primeiro registro da vida dos Camozzato como imigrantes no Brasil.</p>
+
+      <h2>Baixar</h2>
+      <LivroDownloads />
+
+      <h2>Como ler</h2>
+      <ul class="como">
+        <li><strong>No celular ou tablet:</strong> baixe o EPUB e abra no Apple Books (iPhone/iPad), no Google Play Livros ou em outro aplicativo de leitura (Android).</li>
+        <li><strong>No Kindle:</strong> envie o EPUB pelo aplicativo ou pelo site “Enviar para o Kindle” da Amazon.</li>
+        <li><strong>No Kobo e outros leitores:</strong> copie o EPUB para o aparelho.</li>
+        <li><strong>No computador ou para imprimir:</strong> use o PDF.</li>
+      </ul>
+
+      <h2>Sobre esta edição</h2>
+      <p>O texto foi transcrito das 120 páginas digitalizadas que estavam no site antigo, mantendo a grafia da época (por exemplo, “freqüentava”) e a forma como o autor escreveu. Agradecemos aos familiares de José Camozzato por permitirem a divulgação do livro.</p>
+      <p class="meta">Encontrou um erro de leitura ou de nome? Escreva para <a href={`mailto:${home.email}`}>{home.email}</a>.</p>
+      <p><a class="link" href="/historias/jose-camozzato-comerciante/">Conheça a história de José Camozzato</a></p>
+    </div>
+  </div>
+</Base>
+
+<style>
+  .page-head .meta { margin-bottom: 14px; }
+  .livro { display: grid; gap: 40px; }
+  @media (min-width: 860px) { .livro { grid-template-columns: 300px 1fr; gap: 64px; align-items: start; } .capa { position: sticky; top: 24px; } }
+  .capa { max-width: 300px; padding: 8px; }
+  @media (max-width: 859px) { .livro { gap: 24px; } .capa { max-width: 170px; } }
+  .capa img { height: auto; }
+  .texto { max-width: 40em; }
+  .texto .lead { margin-bottom: 8px; }
+  h2 { font-size: 24px; margin: 36px 0 16px; }
+  .como { margin: 0; padding-left: 1.2em; color: var(--ink-soft); }
+  .como li { margin: 6px 0; }
+  .texto p { color: var(--ink-soft); margin-bottom: 1em; }
+</style>

@@ -71,6 +71,7 @@ content:
       - { name: imagem_alt, label: Descrição da imagem, type: text }
       - { name: ordem, label: Ordem, type: number, default: 99 }
       - { name: destaque, label: Mostrar na página inicial, type: boolean, default: false }
+      - { name: livro, label: Mostrar downloads do livro Idos Tempos, type: boolean, default: false }
       - name: fotos
         label: Mais fotos
         type: object

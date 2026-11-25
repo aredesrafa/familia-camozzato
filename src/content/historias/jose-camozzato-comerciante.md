@@ -7,6 +7,7 @@ imagem: /img/livro-capa.jpg
 imagem_alt: Capa do livro Idos Tempos — Memórias de José Camozzato
 ordem: 6
 destaque: false
+livro: true
 fotos:
   - imagem: /img/fotos/individuais/josecamozzato.jpg
     legenda: José Camozzato - 1929
@@ -15,4 +16,4 @@ Nascido em Antonio Prado em 1905, José Camozzato foi autor do livro *Idos Tempo
 
 Como bem retratado no livro, José Camozzato preservava muito sua liberdade, e buscava ele próprio com seus negócios manter e fazer sua família progredir, não deixando que as dificuldades prejudicassem o seu bom humor, uma das principais qualidade dos italianos.
 
-O livro *Idos Tempos* está sendo preparado em edição digital, que ficará no [acervo do site](/#acervo).
+O livro *Idos Tempos* pode ser baixado abaixo, em e-book (EPUB) ou PDF. [Saiba mais sobre o livro](/livro/).
