@@ -31,6 +31,23 @@ const { Content } = await render(pagina);
   </article>
 </Base>
 
+<script>
+  // Tabelas com uma coluna de números (ex.: emigração por região) ganham barras proporcionais
+  // atrás dos valores. Sem JavaScript, continua sendo uma tabela comum. Linhas de "Total" ficam de fora.
+  const numero = (s: string) => Number(s.replace(/[^\d,]/g, '').replace(',', '.'));
+  document.querySelectorAll<HTMLTableElement>('.prose table').forEach((t) => {
+    const linhas = [...t.tBodies[0]?.rows ?? []].filter((r) => r.cells.length === 2 && !/total/i.test(r.cells[0].textContent ?? ''));
+    const valores = linhas.map((r) => numero(r.cells[1].textContent ?? ''));
+    if (linhas.length < 3 || valores.some((v) => !Number.isFinite(v) || v <= 0)) return;
+    const max = Math.max(...valores);
+    t.classList.add('barras');
+    linhas.forEach((r, i) => {
+      r.cells[1].style.setProperty('--p', `${(valores[i] / max) * 100}%`);
+      if (valores[i] === max) r.classList.add('maior');
+    });
+  });
+</script>
+
 <style>
   .page-head .meta { margin-bottom: 14px; }
   .pager { display: flex; justify-content: space-between; gap: 16px 32px; flex-wrap: wrap; border-top: 1px solid var(--line); margin-top: 48px; padding-top: 24px; font-size: 17px; max-width: 40em; }
