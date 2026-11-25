@@ -2,10 +2,10 @@
 nome: "Porto Alegre"
 regiao: "RS"
 ordem: 6
-resumo: "Quando os descendentes de Giuseppe Camozzato começaram a se estabelecer em Porto Alegre, entre eles Olivo, Graciano, Luiz, e outrosk seja para estudar ou para trabalhar, já encontraram na cidade um Camozato que era uma…"
+resumo: "Quando os descendentes de Giuseppe Camozzato começaram a se estabelecer em Porto Alegre, entre eles Olivo, Graciano, Luiz e outros, seja para estudar ou para trabalhar, já encontraram na cidade um Camozato que era uma…"
 ---
 
-Quando os descendentes de Giuseppe Camozzato começaram a se estabelecer em Porto Alegre, entre eles Olivo, Graciano, Luiz, e outrosk seja para estudar ou para trabalhar, já encontraram na cidade um Camozato que era uma pessoa muito conhecida.
+Quando os descendentes de Giuseppe Camozzato começaram a se estabelecer em Porto Alegre, entre eles Olivo, Graciano, Luiz e outros, seja para estudar ou para trabalhar, já encontraram na cidade um Camozato que era uma pessoa muito conhecida.
 
 Tratava-se de Benjamin Celestino Camozato, um dentista que era mais conhecido pela sua intensa participação na vida cultural e artística da cidade. Dedicou-se à fotografia, filatelia, foi um dos pioneiros na introdução do esperanto no Rio Grande do Sul e Santa Catarina e também fez filmes amadores que servem até hoje como registros históricos de eventos importantes da sua época. Por muitos anos escreveu artigos na Revista do Globo, que circulou de forma ininterrupta de 1929 a 1967, e que pertencia à Livraria do Globo, editora e livraria, localizada na Rua da Praia e ponto de encontro de intelectuais e artistas.
 
