@@ -955,6 +955,11 @@
   "grafico": false
  },
  {
+  "origem": "Graciano Camozzato Candidato.jpg",
+  "destino": "public/img/historias/graciano-camozzato-candidato.jpg",
+  "grafico": false
+ },
+ {
   "origem": "victorlions.JPG",
   "destino": "public/img/historias/victor-camozzato-lions-irai-1968.jpg",
   "grafico": false

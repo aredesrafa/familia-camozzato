@@ -8,7 +8,7 @@ imagem_alt: "Fotografia antiga de um grande sobrado de madeira em rua de terra, 
 ordem: 3
 destaque: true
 fotos:
-  - imagem: /img/fotos/diversas/graciano-camozzato.jpg
+  - imagem: /img/historias/graciano-camozzato-candidato.jpg
     legenda: "Graciano Camozzato candidato em Lagoa Vermelha"
 ---
 

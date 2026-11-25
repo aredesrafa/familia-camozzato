@@ -30,14 +30,14 @@ O Brasil acabou em segundo lugar, sendo a Argentina campeã.
 
 Neste mesmo ano de 1960, Bruno participou da seleção brasileira que disputou os jogos pré-olímpicos em Lima, Peru:
 
-**19/4/1960: Brasil 2 x 1 México** — Local: Lima, Peru
-(Brasil: Carlos Alberto, Nonô, Vantuil, Gil e Jobel; Wanderley e Maranhão; Bruno, China, Macarrão e Waldir)
+**19/4/1960: Brasil 2 x 1 México** — Local: Lima, Peru \
+(Brasil: Carlos Alberto, Nonô, Vantuil, Gil e Jobel; Wanderley e Maranhão; Bruno, China, Macarrão e Waldir) \
 Gols: Bruno (2)
 
-**27/4/1960: Brasil 4 x 1 Suriname** — Local: Lima, Peru
-(Brasil: Carlos Alberto, Nonô, Jurandir, Gil e Mura; Maranhão e Jaburu; Bruno, China, Macarrão e Waldir)
+**27/4/1960: Brasil 4 x 1 Suriname** — Local: Lima, Peru \
+(Brasil: Carlos Alberto, Nonô, Jurandir, Gil e Mura; Maranhão e Jaburu; Bruno, China, Macarrão e Waldir) \
 Gols: China, Jaburu, Maranhão e Wooter (contra)
 
-**30/4/1960: Brasil 0 x 2 Peru** — Local: Lima, Peru
-(Brasil: Carlos Alberto, Nonô, Jurandir, Gil e Mura; Maranhão e Rodarte; Bruno, China, Wanderley e Waldir)
+**30/4/1960: Brasil 0 x 2 Peru** — Local: Lima, Peru \
+(Brasil: Carlos Alberto, Nonô, Jurandir, Gil e Mura; Maranhão e Rodarte; Bruno, China, Wanderley e Waldir) \
 Gols: Nonô (contra) e Altuna
