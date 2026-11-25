@@ -1,0 +1,62 @@
+titulo: "Famílias"
+descricao: "Retratos de famílias inteiras, quase sempre feitos em estúdio."
+ordem: 3
+fotos:
+  - imagem: /img/fotos/familias/gracianocamozzato.jpg
+    legenda: "Graciano Camozzato e Albina Marin"
+  - imagem: /img/fotos/familias/albinocamozzato3.jpg
+    legenda: "Albino Camozzato e Nair Gazolla 3"
+  - imagem: /img/fotos/familias/franciscocamuzzato-mathilde.jpg
+    legenda: "Francisco Camuzzato e Mathilde Serafin"
+  - imagem: /img/fotos/familias/angelaggonzato-com-filhos.jpg
+    legenda: "Angela Gonzato com filhos"
+  - imagem: /img/fotos/familias/albinocamozzato.jpg
+    legenda: "Albino Camozzato e Nair Gazolla"
+  - imagem: /img/fotos/familias/antoniocamozzato.jpg
+    legenda: "Antonio Camozzato e Catarina Begnini em 1920"
+  - imagem: /img/fotos/familias/albinocamozzato2.jpg
+    legenda: "Albino Camozzato e Nair Gazolla 2"
+  - imagem: /img/fotos/familias/pierinacaldatocomfilhos.jpg
+    legenda: "Pierina Caldato Camozzato com filhos Antonio Camozzato Pato Branco"
+  - imagem: /img/fotos/familias/pedrocamuzzato.jpg
+    legenda: "Pedro Camuzzato e Otilia"
+  - imagem: /img/fotos/familias/mariaolimpiacamozzato.jpg
+    legenda: "Maria Olimpia Camozzato e Atilio Buselato"
+  - imagem: /img/fotos/familias/atiliocamuzzato-filho-francisco.jpg
+    legenda: "Atilio Camuzzato filho Francisco"
+  - imagem: /img/fotos/familias/santacamuzzato.jpg
+    legenda: "Santa Camuzzato e Germano Spader Pato Branco"
+  - imagem: /img/fotos/familias/pedrovanzim.jpg
+    legenda: "Pedro Vanzin filho Amália Camozzato"
+  - imagem: /img/fotos/familias/maximocamozzato.jpg
+    legenda: "Máximo Camozzato e Josephina em Lagoa Vermelha"
+  - imagem: /img/fotos/familias/angelinacamozzato.jpg
+    legenda: "Angelina Camozzato e Luiz Galvan"
+  - imagem: /img/fotos/familias/angelocamozzato.jpg
+    legenda: "Angelo Camozzato e Giudita Ruzzarin em Sananduva"
+  - imagem: /img/fotos/familias/albinacamozzato-e-josemaschio.jpg
+    legenda: "Albina Camozzato e José Maschio em Antonio Prado"
+  - imagem: /img/fotos/familias/vergiliocamozzato.jpg
+    legenda: "Vergílio Camozzato com filhos em Pato Branco"
+  - imagem: /img/fotos/familias/joaocamuzzato.jpg
+    legenda: "João Camuzzato"
+  - imagem: /img/fotos/familias/joaocamuzzato2.jpg
+    legenda: "João Camuzzato 2"
+  - imagem: /img/fotos/familias/franciscocamuzzato-angela.jpg
+    legenda: "Francisco Camuzzato e Angela Gonzato"
+  - imagem: /img/fotos/familias/mariacamuzzato.jpg
+    legenda: "Maria Camuzzato e Antonio Felipe"
+  - imagem: /img/fotos/familias/angelicacamozzato.jpg
+    legenda: "Angelica Maria Camozzato e Serafin Fabro - Marmeleiro/PR"
+  - imagem: /img/fotos/familias/atiliocamozzato-luisa.jpg
+    legenda: "Atilio Camozzato e Luisa Marsilio com Marianna"
+  - imagem: /img/fotos/familias/conceicaocamozzato.jpg
+    legenda: "Conceição Camozzato e Antonio Bellini em Sananduva"
+  - imagem: /img/fotos/familias/angelojoaocamozzato.jpg
+    legenda: "Angelo João Camozzato em Antonio Prado"
+  - imagem: /img/fotos/familias/angelojoaocamozzato-e-rosa.jpg
+    legenda: "Angelo João Camozzato e Rosa Maria Câmpara Antonio Prado"
+  - imagem: /img/fotos/familias/familiares-angelo-joao.jpg
+    legenda: "Familiares de Angelo João Camozzato em Antonio Prado"
+  - imagem: /img/fotos/familias/verginiacamuzzato.jpg
+    legenda: "Vergínia Camuzzato e João Mezzomo"

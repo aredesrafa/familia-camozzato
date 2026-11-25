@@ -3,6 +3,11 @@ nome: "Pato Branco"
 regiao: "PR"
 ordem: 8
 resumo: "Antonio Camozzato se estabeleceu nas margens do Rio Chopin, no sudoeste do Paraná, em 1933, a aproximadamente 30 quilometros da cidade de Pato Branco que, à época, estava no início de sua existência e não tinha ainda…"
+imagem: "/img/cidades/pato-branco-localizacao.jpg"
+imagem_alt: "Localização da cidade de Pato Branco no mapa do estado do Paraná"
+fotos:
+  - imagem: "/img/cidades/pato-branco-mapa-parana.png"
+    legenda: "Pato Branco no mapa do Paraná"
 ---
 
 Antonio Camozzato se estabeleceu nas margens do Rio Chopin, no sudoeste do Paraná, em 1933, a aproximadamente 30 quilometros da cidade de Pato Branco que, à época, estava no início de sua existência e não tinha ainda este nome. Clevelândia era a cidade mais conhecida na região e ponto de referência para os viajantes. Em Sananduva Antonio já havia suportado a perda da esposa Catarina Begnini, vítima de um grave surto de gripe que acometeu a região no ano de 1921. Assim, quando em 1929/1930 seus negócios foram duramente atingidos pela desvalorização violenta dos seus estoques, fato por sua vez decorrente da crise de 1929 americana, e ainda, por prejuízos causados por grupos de participantes das escaramuças ocorridas na chamada Revolução de 1930 que para seu sustento assaltavam os pequenos comerciantes do interior, Antonio resolveu se mudar.
@@ -16,5 +21,3 @@ Antonio pouco depois se mudou do Chopin para a sede do municipio onde instalou u
 Conheça mais de Pato Branco:
 
 www.patob.com.br (acesse notícias da cidade)
-
-Localização da cidade de Pato Branco no mapa do estado do Paraná

@@ -3,6 +3,13 @@ nome: "Porto Alegre"
 regiao: "RS"
 ordem: 6
 resumo: "Quando os descendentes de Giuseppe Camozzato começaram a se estabelecer em Porto Alegre, entre eles Olivo, Graciano, Luiz e outros, seja para estudar ou para trabalhar, já encontraram na cidade um Camozato que era uma…"
+imagem: "/img/cidades/porto-alegre-livraria-do-globo.jpg"
+imagem_alt: "A fachada histórica da Livraria do Globo, na Rua da Praia"
+fotos:
+  - imagem: "/img/cidades/porto-alegre-localizacao.jpg"
+    legenda: "Localização de Porto Alegre no estado do Rio Grande do Sul"
+  - imagem: "/img/cidades/porto-alegre-divisao-municipal-1809.png"
+    legenda: "Mapa da primeira divisão municipal do Rio Grande do Sul, em 1809: 4 cidades: Porto Alegre, Santo Antonio da Patrulha, Rio Pardo e Rio Grande."
 ---
 
 Quando os descendentes de Giuseppe Camozzato começaram a se estabelecer em Porto Alegre, entre eles Olivo, Graciano, Luiz e outros, seja para estudar ou para trabalhar, já encontraram na cidade um Camozato que era uma pessoa muito conhecida.
@@ -41,12 +48,6 @@ Data de criação: 23/08/1808 - (Alvará de)
 
 Munícipio de origem: Um dos 4 municípios iniciais do RS
 
-Veja a fachada histórica da livraria do globo
-
 Conheça mais de Porto Alegre:
 
 (acesse o sítio da Prefeitura Municipal)
-
-Localização de Porto Alegre no estado do Rio Grande do Sul
-
-Mapa da primeira divisão municipal do Rio Grande do Sul, em 1809: 4 cidades: Porto Alegre, Santo Antonio da Patrulha, Rio Pardo e Rio Grande.

@@ -3,6 +3,15 @@ nome: "Montebelluna"
 regiao: "Treviso, Itália"
 ordem: 1
 resumo: "Trata-se de pequena cidade no nordeste da Itália, próximo à Veneza."
+imagem: "/img/cidades/montebelluna-duomo.jpg"
+imagem_alt: "Igreja Matriz de Montebelluna (Duomo di Montebelluna). Foto de Gianni Desti Baratta"
+fotos:
+  - imagem: "/img/cidades/montebelluna-estacao-de-trem.jpg"
+    legenda: "Estação de trem de Montebelluna (foto da capa do site antigo)"
+  - imagem: "/img/cidades/montebelluna-mapa-veneto.jpg"
+    legenda: "A comune de Montebelluna no mapa da Região do Vêneto"
+  - imagem: "/img/cidades/montebelluna-sobrenome-na-italia.png"
+    legenda: "A presença do sobrenome Camozzato na Itália: concentrada em Montebelluna"
 ---
 
 Trata-se de pequena cidade no nordeste da Itália, próximo à Veneza.
@@ -22,13 +31,5 @@ Conheça mais sobre Montebelluna - veja fotos antigas, atuais, acesse pela síti
 Igreja Matriz de Montebelluna - Duomo di Montebelluna - Parrochia della Beata Vergine Immacolata - 100 anos em 2008
 
 Nesta Paróquia estão os registros de batizado dos Camozzato.
-
-Foto de Gianni Desti Baratta - www.destigianni.com
-
-Foto de Gringo - Concorso Fotografico Nazionale Comuni-Italiani.it - Edizione 2008
-
-Veja a região do Vêneto no mapa da Itália
-
-Veja a comune de Montebelluna no mapa da Região do Vêneto
 
 A presença de Camozzato é concentrada em Montebelluna. Aqueles localizados em outras cidades também tem origem em Montebelluna.

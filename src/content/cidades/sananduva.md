@@ -3,6 +3,11 @@ nome: "Sananduva"
 regiao: "RS"
 ordem: 3
 resumo: "Ano de 1900. Início do século passado. Nas páginas da história, os primeiros registros da fazenda de São João do Forquilha, terras que, na sua quase totalidade, pertenciam aos Irmãos Bueno. Na região desconhecida,…"
+imagem: "/img/cidades/sananduva-localizacao.jpg"
+imagem_alt: "Localização de Sananduva no Rio Grande do Sul"
+fotos:
+  - imagem: "/img/cidades/sananduva-mapa-ligacoes.png"
+    legenda: "Sananduva, a ligação mais rápida ao centro do país"
 ---
 
 Ano de 1900. Início do século passado. Nas páginas da história, os primeiros registros da fazenda de São João do Forquilha, terras que, na sua quase totalidade, pertenciam aos Irmãos Bueno. Na região desconhecida, fugitivos de revoluções e índios viviam. Naquele ano começou a ser escrita a História de Sananduva.
@@ -298,5 +303,3 @@ Data de criação: 15/12/1954 - (Lei nº . 2521)
 Munícipio de origem: Lagoa Vermelha
 
 Conheça mais de Sananduva:
-
-Localização de Sananduva no Rio Grande do Sul

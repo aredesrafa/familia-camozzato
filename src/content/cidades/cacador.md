@@ -3,6 +3,11 @@ nome: "Caçador"
 regiao: "SC"
 ordem: 7
 resumo: "Francisco Camozzato, nascido em 1888 em Caxias do Sul, era o filho mais novo de Giuseppe Camozzato e Marianna de Lucchi. São da sua descendência os Camuzzato que em bom número vivem ainda em Caçador, e em outras…"
+imagem: "/img/cidades/cacador-localizacao.jpg"
+imagem_alt: "Localização de Caçador no mapa do estado de Santa Catarina"
+fotos:
+  - imagem: "/img/cidades/cacador-mapa-rodoviario-sc.jpg"
+    legenda: "Mapa rodoviário de Santa Catarina"
 ---
 
 Francisco Camozzato, nascido em 1888 em Caxias do Sul, era o filho mais novo de Giuseppe Camozzato e Marianna de Lucchi. São da sua descendência os Camuzzato que em bom número vivem ainda em Caçador, e em outras cidades, mas principalmente em cidades do estado de Santa Catarina.
@@ -24,7 +29,3 @@ A região de Caçador foi colonizada de forma mais intensa a partir de 1910 por 
 Conheça mais de Caçador:
 
 (acesse o sítio da Prefeitura Municipal)
-
-Localização de Caçador no mapa do estado de Santa Catarina
-
-[Componente Salvar resultados do FrontPage]

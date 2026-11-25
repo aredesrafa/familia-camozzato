@@ -7,6 +7,9 @@ imagem: "/img/loja-graciano.jpg"
 imagem_alt: "Fotografia antiga de um grande sobrado de madeira em rua de terra, loja de Graciano Camozzato em Sananduva"
 ordem: 3
 destaque: true
+fotos:
+  - imagem: /img/fotos/diversas/graciano-camozzato.jpg
+    legenda: "Graciano Camozzato candidato em Lagoa Vermelha"
 ---
 
 Nascido em Antonio Prado em 1903, Graciano Camozzato é reconhecido pelo seu empreendedorismo e como comerciante. Ainda jovem teve um comércio em Sananduva, mas posteriormente foi no ramo de serrarias onde teve maior sucesso em seus negócios. Quando saiu de Sananduva, em 1952, possuia o Grupo G. Camozzato & Cia Ltda, do qual apenas o setor moageiro vendido a Victor e Máximo Camozzato, Rovilho Basso e Dante Bressianinie, se transformou na atual Vicato.(Conforme descrito por Sergio Lovato à fls. 96 do livro Sananduva-30 anos de Emancipação Política).

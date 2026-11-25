@@ -1,0 +1,27 @@
+titulo: "Casamentos"
+ordem: 6
+fotos:
+  - imagem: /img/fotos/casamentos/aldericocamuzzato.jpg
+    legenda: "Alderico Camuzzato filho Francisco"
+  - imagem: /img/fotos/casamentos/eliacamozzato.jpg
+    legenda: "Elia Camozzato e Jacinto Mafessoni"
+  - imagem: /img/fotos/casamentos/franciscocamozzato.jpg
+    legenda: "Francisco Camuzzato em casamento a identificar"
+  - imagem: /img/fotos/casamentos/pedrocamuzzato.jpg
+    legenda: "Pedro Camuzzato e Otilia"
+  - imagem: /img/fotos/casamentos/rosalinafilhafrancisco.jpg
+    legenda: "Rosalina Camuzzato filha Francisco e Mondardo"
+  - imagem: /img/fotos/casamentos/silvino-e-dalva.jpg
+    legenda: "Silvino Camozzato e Dalva Mezzalira Antonio Prado"
+  - imagem: /img/fotos/casamentos/elias-ricardo-e-luciana.jpg
+    legenda: "Elias Ricardo Camozzato e Luciana - Antonio Prado"
+  - imagem: /img/fotos/casamentos/claudiocamozzatoenevia.jpg
+    legenda: "Claudio Camozzato e Nevia Zortea - Nova Bassano"
+  - imagem: /img/fotos/casamentos/jorgeeveraholas.jpg
+    legenda: "Jorge Camozzato e Vera Holas - Antonio Prado"
+  - imagem: /img/fotos/casamentos/luizatilioeclair.jpg
+    legenda: "Luiz Atilio Camozzato e Clair Bernart - Antonio Prado"
+  - imagem: /img/fotos/casamentos/nelcieleonel.jpg
+    legenda: "Nelci Camozzato e Leonel Sartori - Antonio Prado"
+  - imagem: /img/fotos/casamentos/zolmiraeadelino.jpg
+    legenda: "Zolmira Camozzato e Adelino Baldin - Antonio Prado"

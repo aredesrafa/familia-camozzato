@@ -1,0 +1,10 @@
+titulo: "Quatro e cinco gerações"
+descricao: "Bisavós, avós, pais e filhos reunidos na mesma foto."
+ordem: 9
+fotos:
+  - imagem: /img/fotos/quatro-e-cinco-geracoes/angelina-aldemira.jpg
+    legenda: "Angelina (Angelo/Giuseppe), Aldemira, Giordana e Sarah (nenê)"
+  - imagem: /img/fotos/quatro-e-cinco-geracoes/mariaolimpia-inez.jpg
+    legenda: "Maria Olimpia (Angelo/Giuseppe), Inez, Zaida, Regina e Rafael (nenê)"
+  - imagem: /img/fotos/quatro-e-cinco-geracoes/pierina-elmira.jpg
+    legenda: "Pierina Caldato (viuva Antonio Camozzato), Elmira, Iraide e Milton Cesar"
