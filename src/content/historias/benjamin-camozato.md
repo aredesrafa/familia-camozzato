@@ -1,14 +1,15 @@
 ---
-titulo: "O dentista esperantista em Dresden"
-pessoa: "Benjamin Celestino Camozato"
-periodo: "1904 – 1908"
-resumo: "Formado em Odontologia em Porto Alegre em 1904, o Dr. Benjamin Camozato esteve no Congresso Universal de Esperanto em Dresden, em 1908. Fotografia e cinema também estavam entre suas paixões."
-imagem: "/img/benjamin-ophelia.jpg"
-imagem_alt: "Retrato em sépia de Benjamin Camozato e Ophelia Fontoura, lado a lado"
+titulo: O dentista esperantista em Dresden
+pessoa: Benjamin Celestino Camozato
+periodo: 1904 – 1908
+resumo: Formado em Odontologia em Porto Alegre em 1904, o Dr. Benjamin Camozato
+  esteve no Congresso Universal de Esperanto em Dresden, em 1908. Fotografia e
+  cinema também estavam entre suas paixões.
+imagem: /img/benjamin-ophelia.jpg
+imagem_alt: Retrato em sépia de Benjamin Camozato e Ophelia Fontoura, lado a lado
 ordem: 2
 destaque: true
 ---
-
 Benjamin Celestino Camozato não chegou a ser propriamente um homem de cinema, atividade que ele explorou apenas esporadicamente, durante tão somente dois anos: 1923 e 1924. Ele nasceu em Porto Alegre a 19.05.1885, dez anos antes da invenção do cinema, e faleceu em Porto Alegre a 04.05.1964. Era filho de Oscar Pereira da Costa, brasileiro, e de Isabel Vittoria Camozato, italiana. Desde os três anos, teve como padastro o Engenheiro Arnaldo Muniz Bittencourt.
 
 Foi casado com Ofélia Fontoura Borges, com quem teve três filhos: Walmor Camozato, casado com quatro filhos e dois netos; Wanda Camozato Antonello, viúva de Armando Antonello, com duas filhas e três netos, e Weimar Camozato Turi, viúva de Darwin Turi.
@@ -47,7 +48,7 @@ Homenagem da cidade de Porto Alegre - Rua Dr. Benjamin Camozato, cep 91.760-150
 
 Homenagem da cidade de Cachoeira do Sul - Rua Benjamin Camozato cep 96.505-360
 
-por Mirian Ritzel (jp@jornaldopovo.com.br)
+por Mirian Ritzel ([jp@jornaldopovo.com.br](mailto:jp@jornaldopovo.com.br))
 
 - Lei Municipal nº 1843, de 23/9/1980 – Bairro Marina –
 
