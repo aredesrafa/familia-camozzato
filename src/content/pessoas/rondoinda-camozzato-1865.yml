@@ -1,0 +1,13 @@
+nome: "Rondoinda"
+sobrenome: "Camozzato"
+sexo: F
+nascimento: "1865"
+nascimento_local: "Treviso"
+pai: "src/content/pessoas/giovanni-camozzato-1835.yml"
+mae: "src/content/pessoas/domenica-agnoletto.yml"
+conjuges:
+  - pessoa: "src/content/pessoas/giovanni-piva.yml"
+    casamento: "26/01/1884, Porto Alegre"
+notas: "Na certidão de casamento a mãe aparece como Domingas (Domenica)."
+fontes:
+  - "Primeiros imigrantes (lista do Vapor Hohenzollern)"

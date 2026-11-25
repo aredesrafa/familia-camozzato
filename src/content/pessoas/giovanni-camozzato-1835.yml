@@ -1,0 +1,13 @@
+nome: "Giovanni"
+sobrenome: "Camozzato"
+sexo: M
+nascimento: "1835"
+nascimento_local: "Treviso"
+pai: "src/content/pessoas/domenico-camozzato.yml"
+mae: "src/content/pessoas/anna-tesser.yml"
+conjuges:
+  - pessoa: "src/content/pessoas/domenica-agnoletto.yml"
+  - pessoa: "src/content/pessoas/luigia-agnoletto.yml"
+notas: "Chegou no Vapor Hohenzollern em 12/01/1880 (registros 453 a 459); Colônia Caxias em 02/03/1880."
+fontes:
+  - "Primeiros imigrantes (lista do Vapor Hohenzollern)"

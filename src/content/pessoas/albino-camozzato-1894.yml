@@ -1,0 +1,14 @@
+nome: "Albino"
+sobrenome: "Camozzato"
+sexo: M
+nascimento: "1894"
+pai: "src/content/pessoas/angelo-camozzato-1866.yml"
+mae: "src/content/pessoas/giudita-ruzzarin.yml"
+conjuges:
+  - pessoa: "src/content/pessoas/nair-gazola.yml"
+notas: "Estabeleceu-se em Sananduva em 1917; sócio do irmão Antonio na A Internacional."
+fontes:
+  - "Cidades — Sananduva"
+  - "Destaques"
+  - "Lista de colaboradores (linha de descendência)"
+  - "Primeiros imigrantes (lista do Vapor Hohenzollern)"

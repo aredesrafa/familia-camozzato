@@ -1,0 +1,14 @@
+nome: "Atilio"
+sobrenome: "Camozzato"
+sexo: M
+nascimento: "12/05/1880"
+nascimento_local: "Caxias do Sul"
+pai: "src/content/pessoas/giuseppe-camozzato-1839.yml"
+mae: "src/content/pessoas/marianna-de-lucchi.yml"
+conjuges:
+  - pessoa: "src/content/pessoas/luisa-marsilio.yml"
+notas: "Recebeu o nome do irmão morto na viagem. Ficou em Antonio Prado com a mãe e comandava a Banda Furiosa."
+fontes:
+  - "Destaques"
+  - "Lista de colaboradores (linha de descendência)"
+  - "Primeiros imigrantes (lista do Vapor Hohenzollern)"

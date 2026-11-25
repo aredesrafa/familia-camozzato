@@ -1,0 +1,14 @@
+nome: "Isabel Vittoria"
+sobrenome: "Camozzato"
+sexo: F
+nascimento: "1869"
+nascimento_local: "Treviso"
+pai: "src/content/pessoas/giovanni-camozzato-1835.yml"
+mae: "src/content/pessoas/domenica-agnoletto.yml"
+conjuges:
+  - pessoa: "src/content/pessoas/oscar-pereira-da-costa.yml"
+notas: "Mudou-se para Porto Alegre; mãe de Benjamin Celestino Camozato."
+fontes:
+  - "Destaques"
+  - "Lista de colaboradores (linha de descendência)"
+  - "Primeiros imigrantes (lista do Vapor Hohenzollern)"

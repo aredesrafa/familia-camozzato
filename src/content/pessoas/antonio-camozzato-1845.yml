@@ -1,0 +1,13 @@
+nome: "Antonio"
+sobrenome: "Camozzato"
+sexo: M
+nascimento: "03/02/1845"
+nascimento_local: "Treviso"
+pai: "src/content/pessoas/angelo-camozzato-montebelluna.yml"
+mae: "src/content/pessoas/anna-innocente.yml"
+conjuges:
+  - pessoa: "src/content/pessoas/vittoria-minotto.yml"
+    casamento: "07/10/1877"
+notas: "Chegou a Santos em 17/04/1888 pelo vapor Washington e passou pela Hospedaria dos Imigrantes (registrado como Camazzata). Viveu em Catanduvas e Marília (SP)."
+fontes:
+  - "Primeiros imigrantes (Antonio e Vittoria, Hospedaria dos Imigrantes)"

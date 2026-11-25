@@ -1,0 +1,9 @@
+nome: "Ginebra"
+sobrenome: "Camozzato"
+sexo: F
+nascimento: "1889"
+pai: "src/content/pessoas/angelo-camozzato-1866.yml"
+mae: "src/content/pessoas/giudita-ruzzarin.yml"
+fontes:
+  - "Lista de colaboradores (linha de descendência)"
+  - "Primeiros imigrantes (lista do Vapor Hohenzollern)"

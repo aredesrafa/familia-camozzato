@@ -1,0 +1,8 @@
+nome: "Walmor"
+sobrenome: "Camozato"
+sexo: M
+pai: "src/content/pessoas/benjamin-celestino-camozato.yml"
+mae: "src/content/pessoas/ofelia-fontoura-borges.yml"
+fontes:
+  - "Destaques"
+  - "Lista de colaboradores (linha de descendência)"

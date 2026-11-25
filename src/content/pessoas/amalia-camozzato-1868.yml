@@ -1,0 +1,12 @@
+nome: "Amalia"
+sobrenome: "Camozzato"
+sexo: F
+nascimento: "25/04/1868"
+pai: "src/content/pessoas/giuseppe-camozzato-1839.yml"
+mae: "src/content/pessoas/marianna-de-lucchi.yml"
+conjuges:
+  - pessoa: "src/content/pessoas/giovanni-vanzin.yml"
+fontes:
+  - "Lista de colaboradores (linha de descendência)"
+  - "Primeiros imigrantes (lista do Vapor Hohenzollern)"
+  - "Álbum de fotos (legenda)"

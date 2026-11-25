@@ -1,0 +1,8 @@
+nome: "Giustina"
+sobrenome: "Gallina"
+sexo: F
+nascimento: "26/07/1859"
+pai: "src/content/pessoas/gaetano-gallina.yml"
+mae: "src/content/pessoas/rosa-camozzato-1831.yml"
+fontes:
+  - "Primeiros imigrantes (Rosa e Gaetano, Emigrazione Veneta)"

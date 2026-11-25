@@ -21,6 +21,7 @@ npm run build    # gera dist/
 | `src/content/cidades/` | Cidades importantes | Lugares |
 | `src/content/nucleos/` | Os quatro núcleos imigrantes | Núcleos imigrantes |
 | `src/content/marcos/` | Marcos da linha do tempo | Linha do tempo |
+| `src/content/pessoas/` | Pessoas da árvore genealógica (pai, mãe e cônjuges apontam para o arquivo da outra pessoa). Relações montadas em `src/arvore.ts`; páginas `/arvore/` e `/pessoas/[id]/` | Árvore — pessoas |
 | `public/img/` | Imagens enviadas pelo CMS | Mídia |
 
 Os campos de cada coleção estão em `src/content.config.ts` e espelhados em `.pages.yml`. Ao mudar um, mude o outro.

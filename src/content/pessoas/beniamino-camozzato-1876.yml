@@ -1,0 +1,9 @@
+nome: "Beniamino"
+sobrenome: "Camozzato"
+sexo: M
+nascimento: "1876"
+nascimento_local: "Treviso"
+pai: "src/content/pessoas/giovanni-camozzato-1835.yml"
+mae: "src/content/pessoas/luigia-agnoletto.yml"
+fontes:
+  - "Primeiros imigrantes (lista do Vapor Hohenzollern)"

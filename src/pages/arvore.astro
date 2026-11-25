@@ -1,0 +1,173 @@
+---
+import Base from '../layouts/Base.astro';
+import { carregarArvore, dadosParaGrafico, NUCLEOS } from '../arvore';
+import home from '../data/home.json';
+
+const { pessoas, porId } = await carregarArvore();
+const dados = dadosParaGrafico(pessoas);
+const INICIAL = 'giuseppe-camozzato-1839';
+
+// Lista estática: por núcleo, por geração
+const ROTULO_GERACAO = ['', 'Imigrantes', 'Filhos', 'Netos', 'Bisnetos', 'Trinetos', 'Tetranetos'];
+const lista = NUCLEOS.filter((n) => porId.has(n.raiz)).map((n) => {
+  const membros = pessoas.filter((p) => p.nucleo === n.id);
+  const geracoes = [...new Set(membros.map((p) => p.geracao!))].sort((a, b) => a - b);
+  return {
+    ...n,
+    total: membros.length,
+    geracoes: geracoes.map((g) => ({
+      g,
+      rotulo: ROTULO_GERACAO[g] ?? `${g}ª geração`,
+      pessoas: membros
+        .filter((p) => p.geracao === g)
+        .sort((a, b) => (a.pai ?? a.mae ?? '').localeCompare(b.pai ?? b.mae ?? '') || 0),
+    })),
+  };
+});
+const nome = (id?: string) => (id ? porId.get(id)?.nomeCompleto : undefined);
+---
+<Base title="Árvore genealógica" description="A árvore da família Camozzato: os quatro núcleos imigrantes de Montebelluna e seus descendentes.">
+  <header class="page-head">
+    <div class="wrap">
+      <h1>Árvore genealógica</h1>
+      <p class="lead">{pessoas.length} pessoas, dos pais que ficaram em Montebelluna aos descendentes no Sul, em São Paulo e no Paraná. Escolha alguém para ver de onde veio e quem veio depois.</p>
+    </div>
+  </header>
+
+  <section class="wrap block arvore" data-arvore data-inicial={INICIAL}>
+    <div class="controles">
+      <div class="abas" role="tablist" aria-label="Forma de ver a árvore">
+        <button type="button" role="tab" data-vista="explorar" aria-selected="true">Explorar</button>
+        <button type="button" role="tab" data-vista="ramo" aria-selected="false">Ramo inteiro</button>
+      </div>
+      <label class="busca">
+        <span class="sr-only">Procurar pessoa</span>
+        <input type="search" list="lista-pessoas" placeholder="Procurar pessoa…" data-busca autocomplete="off" />
+      </label>
+      <datalist id="lista-pessoas">
+        {pessoas.map((p) => <option value={`${p.nomeCompleto}${p.datas ? ` (${p.datas})` : ''}`} />)}
+      </datalist>
+    </div>
+    <div class="atalhos">
+      <span class="meta">Imigrantes:</span>
+      {NUCLEOS.filter((n) => porId.has(n.raiz)).map((n) => (
+        <button type="button" class="chip" data-ir={n.raiz}>{n.titulo}</button>
+      ))}
+    </div>
+
+    <div class="palco-moldura">
+      <div class="foco" data-painel aria-live="polite"></div>
+      <div data-painel-vista="explorar" class="palco">
+        <div id="arvore-explorar" class="f3"></div>
+      </div>
+      <div data-painel-vista="ramo" class="palco" hidden>
+        <div id="arvore-ramo"><svg role="img" aria-label="Descendentes da pessoa em foco"></svg></div>
+      </div>
+      <p class="dica meta">Clique numa pessoa para navegar. Arraste para mover e use dois dedos ou a roda do mouse para ampliar.</p>
+    </div>
+    <noscript><p class="lead">Para navegar pela árvore é preciso ativar o JavaScript. A lista completa está logo abaixo.</p></noscript>
+    <script type="application/json" id="dados-arvore" set:html={JSON.stringify(dados)} />
+  </section>
+
+  <section class="band paper">
+    <div class="wrap block">
+      <div class="head"><h2>Todos os nomes, por núcleo</h2></div>
+      <div class="nucleos">
+        {lista.map((n) => (
+          <details class="nucleo" open={n.id === 'giuseppe'}>
+            <summary><span class="titulo">{n.titulo}</span> <span class="meta">{n.total} pessoas</span></summary>
+            {n.geracoes.map((g) => (
+              <div class="geracao">
+                <h3>{g.rotulo}</h3>
+                <ul>
+                  {g.pessoas.map((p) => (
+                    <li>
+                      <a href={`/pessoas/${p.id}/`}>{p.nomeCompleto}</a>
+                      {p.datas && <span class="meta"> {p.datas}</span>}
+                      {p.conjuges.length > 0 && <span class="conj"> ∞ {p.conjuges.map((c) => nome(c.id)).join(', ')}</span>}
+                      {g.g > 1 && (p.pai || p.mae) && <span class="meta filiacao"> · filho(a) de {[nome(p.pai), nome(p.mae)].filter(Boolean).join(' e ')}</span>}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </details>
+        ))}
+      </div>
+      <p class="contribua meta">Faltou alguém ou encontrou um erro? Escreva para <a href={`mailto:${home.email}`}>{home.email}</a>: cada informação nova é conferida antes de entrar na árvore.</p>
+    </div>
+  </section>
+</Base>
+
+<script>
+  import '../scripts/arvore';
+</script>
+
+<style>
+  .arvore { padding-top: 32px; }
+  .controles { display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: center; justify-content: space-between; }
+  .abas { display: inline-flex; border: 1px solid var(--line); border-radius: 8px; padding: 3px; background: var(--white); }
+  .abas button { font: inherit; font-size: 16px; border: 0; background: none; color: var(--navy); padding: 7px 16px; border-radius: 6px; cursor: pointer; }
+  .abas button[aria-selected='true'] { background: var(--navy); color: var(--cream); }
+  .busca input { font: inherit; font-size: 16px; width: min(340px, 100%); padding: 9px 14px; border: 1px solid var(--line); border-radius: 8px; background: var(--white); color: var(--ink); }
+  .busca { flex: 1 1 240px; display: flex; justify-content: flex-end; }
+  @media (max-width: 640px) { .busca { justify-content: stretch; } .busca input { width: 100%; } }
+  .atalhos { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 16px 0; }
+  .chip { font: inherit; font-size: 14px; border: 1px solid var(--line); background: var(--white); color: var(--navy); border-radius: 999px; padding: 4px 12px; cursor: pointer; }
+  .chip:hover { border-color: var(--navy); }
+  .palco-moldura { background: var(--white); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+  .foco { display: flex; flex-wrap: wrap; gap: 4px 14px; align-items: baseline; padding: 12px 16px; border-bottom: 1px solid var(--line); min-height: 50px; }
+  .palco { height: min(68vh, 640px); min-height: 420px; position: relative; }
+  .dica { padding: 10px 16px; border-top: 1px solid var(--line); margin: 0; }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+  .nucleos { display: grid; gap: 14px; }
+  .nucleo { background: var(--white); border: 1px solid var(--line); border-radius: 8px; padding: 0 20px; }
+  .nucleo summary { cursor: pointer; padding: 16px 0; list-style-position: outside; }
+  .nucleo summary .titulo { font-size: 22px; color: var(--navy); }
+  .geracao { border-top: 1px solid var(--line); padding: 14px 0 10px; }
+  .geracao h3 { font-size: 15px; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+  .geracao ul { list-style: none; margin: 0; padding: 0; columns: 2 320px; column-gap: 32px; }
+  .geracao li { break-inside: avoid; font-size: 16px; padding: 3px 0; }
+  .geracao li a { text-decoration: none; }
+  .geracao li a:hover { text-decoration: underline; }
+  .conj { font-style: italic; color: var(--ink-soft); font-size: 15px; }
+  .filiacao { font-size: 13px; }
+  .contribua { margin-top: 24px; }
+</style>
+
+<style is:global>
+  /* Painel da pessoa em foco (gerado pelo script) */
+  [data-painel] .foco-nome { font-size: 20px; color: var(--navy); }
+  [data-painel] .foco-datas { font-size: 14px; color: var(--ink-mute); }
+  [data-painel] .link { margin-left: auto; font-size: 15px; }
+
+  /* A: family-chart com os tokens do site */
+  #arvore-explorar.f3 { --background-color: var(--white); --text-color: var(--ink); --male-color: var(--white); --female-color: var(--white); --genderless-color: var(--white); background: var(--white); color: var(--ink); font-family: var(--font); height: 100%; }
+  #arvore-explorar .card { cursor: pointer; }
+  #arvore-explorar .pcard { width: 190px; min-height: 60px; padding: 9px 12px; border: 1px solid var(--line); border-radius: 6px; background: var(--white); text-align: left; transition: border-color .15s; }
+  #arvore-explorar .pcard:hover { border-color: var(--navy); }
+  #arvore-explorar .pcard .n { font-size: 14.5px; color: var(--navy); line-height: 1.2; }
+  #arvore-explorar .pcard .d { font-size: 12px; color: var(--ink-mute); margin-top: 3px; }
+  #arvore-explorar .pcard.F { border-left: 3px solid var(--accent); }
+  #arvore-explorar .pcard.M { border-left: 3px solid var(--navy); }
+  #arvore-explorar .card-main .pcard { background: var(--navy); border-color: var(--navy); }
+  #arvore-explorar .card-main .pcard .n { color: var(--cream); }
+  #arvore-explorar .card-main .pcard .d { color: rgba(249, 248, 244, .75); }
+  #arvore-explorar .link { stroke: var(--navy) !important; opacity: .45; }
+
+  /* C: ramo inteiro */
+  #arvore-ramo, #arvore-ramo svg { width: 100%; height: 100%; display: block; }
+  #arvore-ramo svg { cursor: grab; touch-action: none; }
+  #arvore-ramo .no rect { fill: var(--white); stroke: var(--line); }
+  #arvore-ramo .no:hover rect, #arvore-ramo .no:focus-visible rect { stroke: var(--navy); }
+  #arvore-ramo .no:focus { outline: none; }
+  #arvore-ramo .no.raiz rect { fill: var(--navy); stroke: var(--navy); }
+  #arvore-ramo .no { cursor: pointer; }
+  #arvore-ramo .no .n { fill: var(--navy); font-family: var(--font); font-size: 13.5px; }
+  #arvore-ramo .no .d { fill: var(--ink-mute); font-family: var(--font); font-size: 11px; }
+  #arvore-ramo .no .s { fill: var(--ink); opacity: .75; font-family: var(--font); font-size: 11px; font-style: italic; }
+  #arvore-ramo .no.raiz .n, #arvore-ramo .no.raiz .d, #arvore-ramo .no.raiz .s { fill: var(--cream); }
+  #arvore-ramo .link { fill: none; stroke: var(--navy); stroke-opacity: .35; }
+  #arvore-ramo .no-casamento { fill: var(--accent); }
+</style>

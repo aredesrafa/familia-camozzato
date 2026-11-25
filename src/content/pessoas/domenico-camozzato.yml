@@ -1,0 +1,8 @@
+nome: "Domenico"
+sobrenome: "Camozzato"
+sexo: M
+nascimento_local: "Montebelluna, Treviso"
+conjuges:
+  - pessoa: "src/content/pessoas/anna-tesser.yml"
+fontes:
+  - "Primeiros imigrantes (lista do Vapor Hohenzollern)"

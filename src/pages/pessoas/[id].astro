@@ -1,0 +1,89 @@
+---
+import Base from '../../layouts/Base.astro';
+import { carregarArvore, NUCLEOS, type Pessoa } from '../../arvore';
+import home from '../../data/home.json';
+
+export async function getStaticPaths() {
+  const { pessoas } = await carregarArvore();
+  return pessoas.map((p) => ({ params: { id: p.id }, props: { id: p.id } }));
+}
+
+const { porId } = await carregarArvore();
+const p = porId.get(Astro.props.id)!;
+const get = (id?: string) => (id ? porId.get(id) : undefined);
+const pais = [get(p.pai), get(p.mae)].filter(Boolean) as Pessoa[];
+const irmaos = [...new Set(pais.flatMap((x) => x.filhos))].filter((id) => id !== p.id).map((id) => porId.get(id)!);
+const filhos = p.filhos.map((id) => porId.get(id)!);
+const nucleo = NUCLEOS.find((n) => n.id === p.nucleo);
+const ROTULO_GERACAO = ['', 'imigrante', 'filho(a) de imigrante', 'neto(a) de imigrante', 'bisneto(a) de imigrante', 'trineto(a) de imigrante'];
+const linha = (x: Pessoa) => x.datas;
+const evento = (data?: string, local?: string) => [data, local].filter(Boolean).join(', ');
+---
+<Base title={p.nomeCompleto} description={`${p.nomeCompleto}${p.datas ? ` (${p.datas})` : ''} na árvore da família Camozzato.`}>
+  <header class="page-head">
+    <div class="wrap">
+      <p class="meta"><a class="link" href="/arvore/">Árvore</a>{nucleo && <> · {nucleo.titulo}</>}{p.geracao && ROTULO_GERACAO[p.geracao] && <> · {ROTULO_GERACAO[p.geracao]}</>}</p>
+      <h1>{p.nomeCompleto}</h1>
+      {p.datas && <p class="lead">{p.datas}</p>}
+    </div>
+  </header>
+
+  <div class="wrap block pessoa">
+    <div class="principal">
+      {(p.nascimento || p.nascimento_local || p.falecimento || p.falecimento_local) && (
+        <dl class="eventos">
+          {(p.nascimento || p.nascimento_local) && <><dt>Nascimento</dt><dd>{evento(p.nascimento, p.nascimento_local)}</dd></>}
+          {(p.falecimento || p.falecimento_local) && <><dt>Falecimento</dt><dd>{evento(p.falecimento, p.falecimento_local)}</dd></>}
+        </dl>
+      )}
+      {p.notas && <p class="notas">{p.notas}</p>}
+
+      <div class="familia">
+        {pais.length > 0 && (
+          <section><h2>Pais</h2><ul>{pais.map((x) => <li><a href={`/pessoas/${x.id}/`}>{x.nomeCompleto}</a> <span class="meta">{linha(x)}</span></li>)}</ul></section>
+        )}
+        {p.conjuges.length > 0 && (
+          <section><h2>{p.conjuges.length > 1 ? 'Cônjuges' : 'Cônjuge'}</h2><ul>{p.conjuges.map((c) => { const x = porId.get(c.id)!; return <li><a href={`/pessoas/${x.id}/`}>{x.nomeCompleto}</a> <span class="meta">{c.casamento ? `casamento: ${c.casamento}` : linha(x)}</span></li>; })}</ul></section>
+        )}
+        {filhos.length > 0 && (
+          <section><h2>Filhos</h2><ul>{filhos.map((x) => { const outro = [x.pai, x.mae].find((g) => g && g !== p.id); return <li><a href={`/pessoas/${x.id}/`}>{x.nomeCompleto}</a> <span class="meta">{linha(x)}{p.conjuges.length > 1 && outro ? ` · com ${porId.get(outro)!.nome}` : ''}</span></li>; })}</ul></section>
+        )}
+        {irmaos.length > 0 && (
+          <section><h2>Irmãos</h2><ul>{irmaos.map((x) => <li><a href={`/pessoas/${x.id}/`}>{x.nomeCompleto}</a> <span class="meta">{linha(x)}</span></li>)}</ul></section>
+        )}
+      </div>
+
+      {p.fontes.length > 0 && (
+        <section class="fontes"><h2>Fontes</h2><ul>{p.fontes.map((f) => <li>{f}</li>)}</ul></section>
+      )}
+      <p class="acoes">
+        <a class="btn btn-outline" href={`/arvore/?p=${p.id}`}>Ver na árvore <span aria-hidden="true">→</span></a>
+        <a class="link" href={`/arvore/?p=${p.id}&vista=ramo`}>Ver descendentes</a>
+      </p>
+      <p class="meta correcao">Tem uma foto, uma data ou uma correção sobre {p.nome}? Escreva para <a href={`mailto:${home.email}`}>{home.email}</a>.</p>
+    </div>
+    {p.foto && (
+      <figure class="frame foto"><img src={p.foto} alt={p.foto_alt ?? `Foto de ${p.nomeCompleto}`} loading="lazy" />{p.foto_alt && <figcaption>{p.foto_alt}</figcaption>}</figure>
+    )}
+  </div>
+</Base>
+
+<style>
+  .page-head .meta { margin-bottom: 14px; }
+  .pessoa { display: grid; gap: 40px; }
+  @media (min-width: 900px) { .pessoa:has(.foto) { grid-template-columns: 1fr 340px; align-items: start; } }
+  .eventos { display: grid; grid-template-columns: max-content 1fr; gap: 6px 20px; margin: 0 0 24px; font-size: 17px; }
+  .eventos dt { color: var(--ink-mute); }
+  .eventos dd { margin: 0; }
+  .notas { max-width: 40em; color: var(--ink-soft); margin-bottom: 28px; }
+  .familia { display: grid; gap: 24px 40px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); border-top: 1px solid var(--line); padding-top: 24px; }
+  h2 { font-size: 15px; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+  ul { list-style: none; margin: 0; padding: 0; }
+  li { padding: 3px 0; font-size: 17px; }
+  li a { text-decoration: none; }
+  li a:hover { text-decoration: underline; }
+  .fontes { border-top: 1px solid var(--line); margin-top: 28px; padding-top: 20px; }
+  .fontes li { font-size: 15px; color: var(--ink-soft); }
+  .acoes { display: flex; flex-wrap: wrap; gap: 16px 24px; align-items: center; margin: 32px 0 16px; }
+  .correcao { max-width: 40em; }
+</style>

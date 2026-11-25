@@ -1,0 +1,12 @@
+nome: "Attilio"
+sobrenome: "Camozzato"
+sexo: M
+nascimento: "04/02/1873"
+nascimento_local: "Treviso"
+falecimento: "c. 1880"
+falecimento_local: "São Sebastião do Caí"
+pai: "src/content/pessoas/giuseppe-camozzato-1839.yml"
+mae: "src/content/pessoas/marianna-de-lucchi.yml"
+notas: "Morreu aos 7 anos, já no Brasil, durante a viagem para a colônia (depoimento de Madre Maria Juliana)."
+fontes:
+  - "Primeiros imigrantes (lista do Vapor Hohenzollern)"

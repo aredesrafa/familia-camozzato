@@ -1,0 +1,7 @@
+nome: "Weimar"
+sobrenome: "Camozato"
+sexo: F
+pai: "src/content/pessoas/benjamin-celestino-camozato.yml"
+mae: "src/content/pessoas/ofelia-fontoura-borges.yml"
+fontes:
+  - "Destaques"

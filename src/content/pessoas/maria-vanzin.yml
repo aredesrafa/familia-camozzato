@@ -1,0 +1,11 @@
+nome: "Maria"
+sobrenome: "Vanzin"
+sexo: F
+pai: "src/content/pessoas/giovanni-vanzin.yml"
+mae: "src/content/pessoas/amalia-camozzato-1868.yml"
+conjuges:
+  - pessoa: "src/content/pessoas/joao-ceron.yml"
+    casamento: "1914"
+fontes:
+  - "Lista de colaboradores (linha de descendência)"
+  - "Álbum de fotos (legenda)"

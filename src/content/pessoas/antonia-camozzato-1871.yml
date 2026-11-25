@@ -1,0 +1,9 @@
+nome: "Antonia"
+sobrenome: "Camozzato"
+sexo: F
+nascimento: "1871"
+nascimento_local: "Treviso"
+pai: "src/content/pessoas/giovanni-camozzato-1835.yml"
+mae: "src/content/pessoas/luigia-agnoletto.yml"
+fontes:
+  - "Primeiros imigrantes (lista do Vapor Hohenzollern)"
