@@ -1,0 +1,43 @@
+---
+// Prévia estática da árvore (os quatro núcleos e seus pais).
+// Será substituída pela árvore interativa gerada a partir das pessoas cadastradas no CMS.
+---
+<div class="tree-card" role="img" aria-label="Árvore resumida: Domenico Camozzato e Anna Tesser são pais de Giuseppe, Giovanni e Rosa; Angelo Camozzato e Anna Innocente são pais de Antonio.">
+  <svg viewBox="0 0 760 250" aria-hidden="true">
+    <g font-size="12.5" text-anchor="middle">
+      <rect x="70" y="14" width="130" height="44" rx="5" fill="#0F3C63" /><text x="135" y="33" fill="#F9F8F4">Domenico</text><text x="135" y="49" fill="#F9F8F4" font-size="11" opacity=".75">Camozzato</text>
+      <rect x="220" y="14" width="130" height="44" rx="5" fill="#0F3C63" /><text x="285" y="33" fill="#F9F8F4">Anna</text><text x="285" y="49" fill="#F9F8F4" font-size="11" opacity=".75">Tesser</text>
+      <line x1="200" y1="36" x2="220" y2="36" stroke="#0F3C63" /><circle cx="210" cy="36" r="3.2" fill="#A32E29" />
+      <rect x="470" y="14" width="130" height="44" rx="5" fill="#0F3C63" /><text x="535" y="33" fill="#F9F8F4">Angelo</text><text x="535" y="49" fill="#F9F8F4" font-size="11" opacity=".75">Camozzato</text>
+      <rect x="620" y="14" width="130" height="44" rx="5" fill="#0F3C63" /><text x="685" y="33" fill="#F9F8F4">Anna</text><text x="685" y="49" fill="#F9F8F4" font-size="11" opacity=".75">Innocente</text>
+      <line x1="600" y1="36" x2="620" y2="36" stroke="#0F3C63" /><circle cx="610" cy="36" r="3.2" fill="#A32E29" />
+      <g stroke="#0F3C63" fill="none" opacity=".7">
+        <path d="M210 39 V110 M60 110 H400 M60 110 V150 M230 110 V150 M400 110 V150" />
+        <path d="M610 39 V150" />
+      </g>
+      <g fill="#FFFFFF" stroke="#DBD7CC">
+        <rect x="10" y="150" width="100" height="44" rx="5" /><rect x="10" y="200" width="100" height="40" rx="5" />
+        <rect x="180" y="150" width="100" height="44" rx="5" /><rect x="180" y="200" width="100" height="40" rx="5" />
+        <rect x="350" y="150" width="100" height="44" rx="5" /><rect x="350" y="200" width="100" height="40" rx="5" />
+        <rect x="560" y="150" width="100" height="44" rx="5" /><rect x="560" y="200" width="100" height="40" rx="5" />
+      </g>
+      <g fill="#26251F">
+        <text x="60" y="169">Giuseppe</text><text x="60" y="185" font-size="10.5" opacity=".6">n. 1839</text>
+        <text x="60" y="224" font-size="10.5">Marianna De Lucchi</text>
+        <text x="230" y="169">Giovanni</text><text x="230" y="185" font-size="10.5" opacity=".6">n. 1835</text>
+        <text x="230" y="224" font-size="11.5">Luigia Agnoletto</text>
+        <text x="400" y="169">Rosa</text><text x="400" y="185" font-size="10.5" opacity=".6">chega em 1889</text>
+        <text x="400" y="224" font-size="11.5">Gaetano Gallina</text>
+        <text x="610" y="169">Antonio</text><text x="610" y="185" font-size="10.5" opacity=".6">chega em 1888</text>
+        <text x="610" y="224" font-size="11.5">Vittoria Minotto</text>
+      </g>
+      <g fill="#A32E29"><circle cx="60" cy="197" r="3" /><circle cx="230" cy="197" r="3" /><circle cx="400" cy="197" r="3" /><circle cx="610" cy="197" r="3" /></g>
+    </g>
+  </svg>
+</div>
+
+<style>
+  .tree-card { background: var(--white); border: 1px solid var(--line); border-radius: 8px; padding: 22px 18px; overflow-x: auto; }
+  svg { min-width: 600px; width: 100%; height: auto; display: block; }
+  text { font-family: var(--font); }
+</style>

@@ -1,0 +1,27 @@
+---
+import type { CollectionEntry } from 'astro:content';
+interface Props { story: CollectionEntry<'historias'> }
+const { story } = Astro.props;
+const d = story.data;
+const href = `/historias/${story.id}/`;
+---
+<article class="story">
+  {d.imagem && (
+    <a href={href} tabindex="-1" aria-hidden="true">
+      <figure class="frame"><img src={d.imagem} alt={d.imagem_alt ?? ''} loading="lazy" /></figure>
+    </a>
+  )}
+  {d.periodo && <p class="meta">{d.periodo}</p>}
+  <h3><a href={href}>{d.titulo}</a></h3>
+  <p class="resumo">{d.resumo}</p>
+  <a class="link more" href={href}>Ler a história</a>
+</article>
+
+<style>
+  .frame { aspect-ratio: 4 / 3; margin: 0 0 16px; padding: 8px; }
+  h3 { margin: 4px 0 8px; }
+  h3 a { text-decoration: none; }
+  h3 a:hover { text-decoration: underline; text-underline-offset: 4px; }
+  .resumo { font-size: 16px; color: var(--ink-soft); margin-bottom: 10px; }
+  .more { font-size: 15px; }
+</style>

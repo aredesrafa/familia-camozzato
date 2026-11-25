@@ -1,0 +1,60 @@
+# Site estático: sem funções nem adaptador, para ficar no plano Free.
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "24"
+
+# O painel do CMS não deve aparecer em buscadores.
+[[headers]]
+  for = "/admin/*"
+  [headers.values]
+    X-Robots-Tag = "noindex"
+
+# Endereços do site antigo (FrontPage) → novas páginas.
+# Só passam a valer quando o domínio familiacamozzato.com.br apontar para o Netlify.
+[[redirects]]
+  from = "/pagina_principal.htm"
+  to = "/"
+  status = 301
+[[redirects]]
+  from = "/destaques.htm"
+  to = "/historias/"
+  status = 301
+[[redirects]]
+  from = "/cidades_importantes/cidades_importantes.htm"
+  to = "/cidades/"
+  status = 301
+[[redirects]]
+  from = "/cidades_importantes/montebelluna.htm"
+  to = "/cidades/montebelluna/"
+  status = 301
+[[redirects]]
+  from = "/cidades_importantes/antonioprado.htm"
+  to = "/cidades/antonio-prado/"
+  status = 301
+[[redirects]]
+  from = "/cidades_importantes/sananduva.htm"
+  to = "/cidades/sananduva/"
+  status = 301
+[[redirects]]
+  from = "/cidades_importantes/lagoavermelha.htm"
+  to = "/cidades/lagoa-vermelha/"
+  status = 301
+[[redirects]]
+  from = "/cidades_importantes/passofundo.htm"
+  to = "/cidades/passo-fundo/"
+  status = 301
+[[redirects]]
+  from = "/cidades_importantes/portoalegre.htm"
+  to = "/cidades/porto-alegre/"
+  status = 301
+[[redirects]]
+  from = "/cidades_importantes/cacador.htm"
+  to = "/cidades/cacador/"
+  status = 301
+[[redirects]]
+  from = "/cidades_importantes/patobranco.htm"
+  to = "/cidades/pato-branco/"
+  status = 301

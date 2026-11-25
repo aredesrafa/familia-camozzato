@@ -1,0 +1,22 @@
+---
+import home from '../data/home.json';
+---
+<footer>
+  <div class="wrap">
+    <nav aria-label="Rodapé">
+      <a href="/historias/">Histórias</a>
+      <a href="/cidades/">Lugares</a>
+      <a href="/linha-do-tempo/">Linha do tempo</a>
+      <a href={`mailto:${home.email}`}>{home.email}</a>
+    </nav>
+    <p>Família Camozzato, Camuzzato e Camossato · história mantida pelos descendentes, com a contribuição de cada um.</p>
+  </div>
+</footer>
+
+<style>
+  footer { border-top: 1px solid var(--line); padding: 32px 0 44px; }
+  nav { display: flex; flex-wrap: wrap; gap: 6px 22px; font-size: 15px; margin-bottom: 20px; }
+  nav a { text-decoration: none; }
+  nav a:hover { text-decoration: underline; }
+  p { font-size: 13px; color: var(--ink-mute); }
+</style>

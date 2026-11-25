@@ -1,0 +1,37 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+
+const cidades = (await getCollection('cidades')).sort((a, b) => a.data.ordem - b.data.ordem);
+---
+<Base title="Lugares">
+  <header class="page-head">
+    <div class="wrap">
+      <h1>Os lugares da família</h1>
+      <p class="lead">De Montebelluna, uma pequena cidade no norte da Itália, os Camozzato começaram uma jornada em busca de melhores condições de vida. Conheça as cidades por onde passaram e onde vivem.</p>
+    </div>
+  </header>
+  <div class="wrap block">
+    <ol class="list">
+      {cidades.map((c) => (
+        <li>
+          <a href={`/cidades/${c.id}/`}>
+            <span class="regiao">{c.data.regiao}</span>
+            <h2>{c.data.nome}</h2>
+            <p>{c.data.resumo}</p>
+          </a>
+        </li>
+      ))}
+    </ol>
+  </div>
+</Base>
+
+<style>
+  .list { list-style: none; margin: 0; padding: 0; display: grid; gap: 20px; }
+  @media (min-width: 768px) { .list { grid-template-columns: repeat(2, 1fr); gap: 24px; } }
+  .list a { display: block; height: 100%; background: var(--white); border: 1px solid var(--line); border-radius: 8px; padding: 24px 26px; text-decoration: none; color: inherit; transition: border-color .15s; }
+  .list a:hover { border-color: var(--navy); }
+  .regiao { font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); }
+  h2 { font-size: 24px; margin: 4px 0 10px; }
+  p { font-size: 16px; color: var(--ink-soft); }
+</style>

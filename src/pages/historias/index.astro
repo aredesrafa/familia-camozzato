@@ -1,0 +1,25 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import StoryCard from '../../components/StoryCard.astro';
+
+const historias = (await getCollection('historias')).sort((a, b) => a.data.ordem - b.data.ordem);
+---
+<Base title="Histórias">
+  <header class="page-head">
+    <div class="wrap">
+      <h1>Histórias da família</h1>
+      <p class="lead">A árvore dá nomes e datas. Estas são as histórias que dão voz a esses nomes.</p>
+    </div>
+  </header>
+  <div class="wrap block">
+    <div class="grid">
+      {historias.map((h) => <StoryCard story={h} />)}
+    </div>
+  </div>
+</Base>
+
+<style>
+  .grid { display: grid; gap: 40px; }
+  @media (min-width: 768px) { .grid { grid-template-columns: repeat(3, 1fr); gap: 32px 28px; } }
+</style>

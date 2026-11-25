@@ -1,0 +1,129 @@
+# Configuração do CMS (Sveltia CMS, formato compatível com Decap CMS).
+# Cada coleção aqui corresponde a uma coleção em src/content.config.ts.
+# Toda gravação no CMS vira um commit na branch abaixo e dispara uma publicação no Netlify.
+
+backend:
+  name: github
+  repo: aredesrafa/familia-camozzato
+  branch: main
+  # Login com GitHub via o provedor OAuth do Netlify (Access & security > OAuth).
+  base_url: https://api.netlify.com
+  commit_messages:
+    create: "conteúdo: cria {{collection}} “{{slug}}”"
+    update: "conteúdo: atualiza {{collection}} “{{slug}}”"
+    delete: "conteúdo: remove {{collection}} “{{slug}}”"
+    uploadMedia: "conteúdo: envia imagem “{{path}}”"
+    deleteMedia: "conteúdo: remove imagem “{{path}}”"
+
+site_url: https://familia-camozzato.netlify.app
+display_url: https://familia-camozzato.netlify.app
+media_folder: public/img
+public_folder: /img
+
+collections:
+  - name: home
+    label: Página inicial
+    files:
+      - name: home
+        label: Textos da página inicial
+        file: src/data/home.json
+        format: json
+        fields:
+          - { name: hero_titulo, label: Título principal, widget: string }
+          - { name: hero_texto, label: Texto de abertura, widget: text }
+          - { name: hero_imagem, label: Foto principal, widget: image }
+          - { name: hero_imagem_alt, label: Descrição da foto (para leitores de tela), widget: text }
+          - { name: hero_legenda, label: Legenda da foto, widget: string, required: false }
+          - name: numeros
+            label: Números
+            widget: list
+            fields:
+              - { name: valor, label: Valor, widget: string }
+              - { name: rotulo, label: Descrição, widget: string }
+          - { name: arvore_titulo, label: Árvore — título, widget: string }
+          - { name: arvore_texto, label: Árvore — texto, widget: text }
+          - { name: livro_titulo, label: Livro — título, widget: string }
+          - { name: livro_texto, label: Livro — texto, widget: text }
+          - { name: livro_capa, label: Livro — capa, widget: image }
+          - { name: contribua_titulo, label: Contribua — título, widget: string }
+          - { name: contribua_texto, label: Contribua — texto, widget: text }
+          - { name: email, label: E-mail de contato, widget: string }
+
+  - name: historias
+    label: Histórias
+    label_singular: História
+    folder: src/content/historias
+    extension: md
+    format: frontmatter
+    create: true
+    slug: "{{slug}}"
+    identifier_field: titulo
+    summary: "{{titulo}} — {{pessoa}}"
+    sortable_fields: [ordem, titulo]
+    fields:
+      - { name: titulo, label: Título, widget: string }
+      - { name: pessoa, label: Pessoa, widget: string, required: false }
+      - { name: periodo, label: Data ou período, widget: string, required: false, hint: "Ex.: 1904 – 1908, ou Sananduva" }
+      - { name: resumo, label: Resumo, widget: text }
+      - { name: imagem, label: Imagem, widget: image, required: false }
+      - { name: imagem_alt, label: Descrição da imagem, widget: text, required: false }
+      - { name: ordem, label: Ordem, widget: number, value_type: int, default: 99 }
+      - { name: destaque, label: Mostrar na página inicial, widget: boolean, default: false }
+      - { name: body, label: Texto, widget: markdown }
+
+  - name: cidades
+    label: Lugares
+    label_singular: Lugar
+    folder: src/content/cidades
+    extension: md
+    format: frontmatter
+    create: true
+    slug: "{{slug}}"
+    identifier_field: nome
+    summary: "{{nome}} ({{regiao}})"
+    sortable_fields: [ordem, nome]
+    fields:
+      - { name: nome, label: Nome, widget: string }
+      - { name: regiao, label: Estado ou país, widget: string }
+      - { name: ordem, label: Ordem, widget: number, value_type: int, default: 99 }
+      - { name: resumo, label: Resumo, widget: text }
+      - { name: imagem, label: Imagem, widget: image, required: false }
+      - { name: imagem_alt, label: Descrição da imagem, widget: text, required: false }
+      - { name: body, label: Texto, widget: markdown }
+
+  - name: nucleos
+    label: Núcleos imigrantes
+    label_singular: Núcleo
+    folder: src/content/nucleos
+    extension: md
+    format: frontmatter
+    create: true
+    slug: "{{slug}}"
+    identifier_field: titulo
+    sortable_fields: [ordem, titulo]
+    fields:
+      - { name: titulo, label: Título, widget: string }
+      - { name: lugares, label: Lugares, widget: string }
+      - { name: grafia, label: Grafia do sobrenome (se diferente), widget: string, required: false }
+      - { name: ordem, label: Ordem, widget: number, value_type: int, default: 99 }
+      - { name: raiz, label: Casal de origem, widget: string }
+      - { name: body, label: Texto, widget: text }
+
+  - name: marcos
+    label: Linha do tempo
+    label_singular: Marco
+    folder: src/content/marcos
+    extension: yml
+    format: yaml
+    create: true
+    slug: "{{fields.ano}}-{{slug}}"
+    identifier_field: titulo
+    summary: "{{data}} — {{titulo}}"
+    sortable_fields: [ano, titulo]
+    fields:
+      - { name: ano, label: Ano, widget: number, value_type: int }
+      - { name: mes, label: Mês (para ordenar no mesmo ano), widget: number, value_type: int, required: false, min: 1, max: 12 }
+      - { name: data, label: Data como aparece no site, widget: string, hint: "Ex.: 12 jan 1880, c. 1915, 1888 – 1889" }
+      - { name: titulo, label: Título, widget: string }
+      - { name: descricao, label: Descrição, widget: text }
+      - { name: home, label: Mostrar na página inicial, widget: boolean, default: false }

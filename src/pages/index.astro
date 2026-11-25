@@ -1,0 +1,194 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import TreePreview from '../components/TreePreview.astro';
+import Timeline from '../components/Timeline.astro';
+import StoryCard from '../components/StoryCard.astro';
+import home from '../data/home.json';
+import { porData } from '../lib';
+
+const marcos = (await getCollection('marcos', (m) => m.data.home)).sort(porData);
+const nucleos = (await getCollection('nucleos')).sort((a, b) => a.data.ordem - b.data.ordem);
+const historias = (await getCollection('historias', (h) => h.data.destaque))
+  .sort((a, b) => a.data.ordem - b.data.ordem)
+  .slice(0, 3);
+
+const rotas = [
+  {
+    titulo: 'Giuseppe e Giovanni', via: 'pelo Rio de Janeiro, 1880',
+    paradas: [
+      ['Montebelluna', 'Treviso, Itália'], ['Rio de Janeiro', '12 jan 1880'], ['Caxias do Sul', 'fev–mar 1880'],
+      ['Antonio Prado', 'RS'], ['Sananduva', 'c. 1915'], ['Pato Branco', 'PR, 1933'],
+    ],
+  },
+  {
+    titulo: 'Antonio e Vittoria', via: 'por Santos, 1888',
+    paradas: [
+      ['Montebelluna', 'Treviso, Itália'], ['Santos', '1888'], ['São Paulo', 'Hospedaria dos Imigrantes'],
+      ['Catanduvas · Marília', 'SP'], ['Umuarama · Icaraíma', 'norte do PR'],
+    ],
+  },
+];
+---
+<Base>
+  <div class="wrap">
+    <section class="hero">
+      <div>
+        <h1>{home.hero_titulo}</h1>
+        <p class="lead">{home.hero_texto}</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#arvore">Explorar a árvore <span aria-hidden="true">→</span></a>
+          <a class="link" href="/historias/">Ler as histórias</a>
+        </div>
+      </div>
+      <figure class="frame">
+        <img src={home.hero_imagem} alt={home.hero_imagem_alt} width="927" height="655" fetchpriority="high" />
+        {home.hero_legenda && <figcaption>{home.hero_legenda}</figcaption>}
+      </figure>
+    </section>
+  </div>
+
+  <section class="band" id="linha">
+    <div class="wrap block">
+      <div class="head">
+        <h2>Marcos da história</h2>
+        <a class="link" href="/linha-do-tempo/">Linha do tempo completa</a>
+      </div>
+      <Timeline marcos={marcos} />
+    </div>
+  </section>
+
+  <section class="band paper" id="arvore">
+    <div class="wrap block">
+      <div class="tree-band">
+        <div>
+          <h2>{home.arvore_titulo}</h2>
+          <p class="lead">{home.arvore_texto}</p>
+          <p class="meta">A árvore interativa está em construção.</p>
+        </div>
+        <TreePreview />
+      </div>
+      <div class="stats">
+        {home.numeros.map((n) => (
+          <div class="stat"><b>{n.valor}</b><span>{n.rotulo}</span></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="nucleos">
+    <div class="wrap block">
+      <div class="head"><h2>Os quatro núcleos</h2></div>
+      <div class="lines">
+        {nucleos.map((n) => (
+          <article class="line-card">
+            <h3>{n.data.titulo} {n.data.grafia && <span class="tag">{n.data.grafia.toUpperCase()}</span>}</h3>
+            <p class="where">{n.data.lugares}</p>
+            <p>{n.body}</p>
+            <p class="root">{n.data.raiz}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="historias">
+    <div class="wrap block">
+      <div class="head"><h2>Das histórias</h2><a class="link" href="/historias/">Todas as histórias</a></div>
+      <div class="stories">
+        {historias.map((h) => <StoryCard story={h} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="band paper" id="lugares">
+    <div class="wrap block">
+      <div class="head"><h2>Os caminhos da família</h2><a class="link" href="/cidades/">As cidades</a></div>
+      <div class="routes">
+        {rotas.map((r) => (
+          <div class="route">
+            <h3>{r.titulo} <span>· {r.via}</span></h3>
+            <ol class="stops">
+              {r.paradas.map(([lugar, nota], i) => (
+                <li class={i === 0 ? 'origin' : undefined}><b>{lugar}</b><span>{nota}</span></li>
+              ))}
+            </ol>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="acervo">
+    <div class="wrap block">
+      <div class="book">
+        <figure class="frame"><img src={home.livro_capa} alt="Capa do livro Idos Tempos — Memórias de José Camozzato, com foto de um senhor de chapéu segurando uma espingarda" width="390" height="640" loading="lazy" /></figure>
+        <div>
+          <p class="eyebrow">Do acervo · em preparação</p>
+          <h2>{home.livro_titulo}</h2>
+          <p class="lead">{home.livro_texto}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta" id="contribua">
+    <div class="wrap">
+      <div>
+        <h2>{home.contribua_titulo}</h2>
+        <p>{home.contribua_texto}</p>
+      </div>
+      <a class="btn btn-primary" href={`mailto:${home.email}`}>Contribuir <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero { display: grid; gap: 40px; align-items: center; padding: 40px 0 64px; }
+  @media (min-width: 980px) { .hero { grid-template-columns: 1.02fr 1fr; gap: 64px; padding: 64px 0 80px; } }
+  .hero .lead { margin: 24px 0 32px; max-width: 30em; }
+  .hero .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 20px 32px; }
+  .hero .frame img { aspect-ratio: 927 / 655; }
+
+  .tree-band { display: grid; gap: 40px; }
+  @media (min-width: 980px) { .tree-band { grid-template-columns: .8fr 1.45fr; gap: 48px; align-items: center; } }
+  .tree-band .lead { margin: 16px 0 18px; }
+  .stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px 28px; margin-top: 36px; padding-top: 28px; border-top: 1px solid var(--line); }
+  @media (min-width: 600px) { .stats { grid-template-columns: repeat(4, 1fr); } }
+  .stat b { display: block; font-weight: 400; font-size: 30px; color: var(--navy); line-height: 1.1; }
+  .stat span { font-size: 14px; color: var(--ink-mute); line-height: 1.35; display: block; margin-top: 4px; }
+
+  .lines { display: grid; gap: 20px; }
+  @media (min-width: 768px) { .lines { grid-template-columns: repeat(2, 1fr); gap: 24px; } }
+  .line-card { background: var(--white); border: 1px solid var(--line); border-radius: 8px; padding: 26px 26px 22px; }
+  .line-card .where { font-size: 15px; color: var(--ink-mute); margin: 4px 0 14px; }
+  .line-card p { font-size: 16px; color: var(--ink-soft); }
+  .line-card .root { border-top: 1px solid var(--line); margin-top: 18px; padding-top: 12px; font-size: 14px; color: var(--ink-mute); }
+  .tag { display: inline-block; font-size: 12px; letter-spacing: .06em; color: var(--accent); border: 1px solid rgba(163, 46, 41, .35); border-radius: 999px; padding: 1px 10px; margin-left: 6px; vertical-align: 3px; }
+
+  .stories { display: grid; gap: 36px; }
+  @media (min-width: 768px) { .stories { grid-template-columns: repeat(3, 1fr); gap: 28px; } }
+
+  .routes { display: grid; gap: 28px; }
+  .route h3 { font-size: 18px; color: var(--ink); margin-bottom: 14px; }
+  .route h3 span { color: var(--ink-mute); font-size: 15px; }
+  .stops { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; }
+  .stops li { position: relative; padding: 22px 18px 0 0; min-width: 120px; flex: 1; }
+  .stops li::before { content: ""; position: absolute; top: 6px; left: 0; right: 0; height: 2px; background: var(--navy); opacity: .25; }
+  .stops li:last-child::before { right: auto; width: 12px; }
+  .stops li::after { content: ""; position: absolute; top: 1px; left: 0; width: 12px; height: 12px; border-radius: 50%; background: var(--cream); border: 2px solid var(--navy); }
+  .stops li.origin::after { background: var(--accent); border-color: var(--accent); }
+  .stops b { display: block; font-weight: 400; color: var(--navy); font-size: 17px; line-height: 1.25; }
+  .stops span { display: block; font-size: 13px; color: var(--ink-mute); line-height: 1.35; margin-top: 2px; }
+
+  .book { display: grid; gap: 36px; align-items: center; }
+  @media (min-width: 768px) { .book { grid-template-columns: 260px 1fr; gap: 56px; } }
+  .book .frame { max-width: 260px; padding: 8px; }
+  .book h2 { margin-top: 8px; }
+  .book .lead { margin-top: 14px; max-width: 36em; }
+
+  .cta { background: var(--navy); color: var(--cream); }
+  .cta .wrap { display: flex; flex-wrap: wrap; gap: 24px 48px; align-items: center; justify-content: space-between; padding-top: 52px; padding-bottom: 52px; }
+  .cta h2 { color: var(--cream); }
+  .cta p { color: rgba(249, 248, 244, .82); font-size: 16px; margin-top: 8px; max-width: 34em; }
+</style>

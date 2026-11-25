@@ -1,0 +1,21 @@
+{
+  "hero_titulo": "De Montebelluna ao Brasil: a história dos Camozzato",
+  "hero_texto": "Registros, fotografias e memórias dos descendentes de Giuseppe, Giovanni, Rosa e Antonio Camozzato — e também dos Camuzzato e Camossato, que nasceram de erros de registro na chegada.",
+  "hero_imagem": "/img/familia-graciano.jpg",
+  "hero_imagem_alt": "Retrato de estúdio em sépia: Albina e Graciano Camozzato sentados nas pontas, com os cinco filhos entre eles, cada um com o nome anotado acima",
+  "hero_legenda": "Graciano e Albina Camozzato com os filhos Nactivo, Bruno, Beatriz, Alderico e Plinio.",
+  "numeros": [
+    { "valor": "4", "rotulo": "núcleos imigrantes vindos de Montebelluna" },
+    { "valor": "3", "rotulo": "grafias: Camozzato, Camuzzato e Camossato" },
+    { "valor": "182", "rotulo": "fotografias de família no acervo" },
+    { "valor": "120", "rotulo": "páginas do livro de José Camozzato" }
+  ],
+  "arvore_titulo": "Quatro núcleos, uma só árvore",
+  "arvore_texto": "Das famílias de Montebelluna aos descendentes espalhados pelo Sul, por São Paulo e pelo Paraná. Cada pessoa terá sua página, com datas, lugares, fotos e a fonte de cada informação.",
+  "livro_titulo": "Idos Tempos — Memórias de José Camozzato",
+  "livro_texto": "O livro de José (Giuseppe), filho de Angelo, conta a vida na colônia e a mudança para Sananduva. As 120 páginas digitalizadas ganham uma edição digital para ler no celular ou no leitor de e-books.",
+  "livro_capa": "/img/livro-capa.jpg",
+  "contribua_titulo": "Você guarda fotos, cartas ou lembranças?",
+  "contribua_texto": "Um nome, uma data ou uma foto com algo escrito no verso pode completar um ramo inteiro. Envie também correções — tudo é conferido antes de entrar no site.",
+  "email": "familia.camozzato@gmail.com"
+}
