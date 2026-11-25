@@ -1,0 +1,132 @@
+---
+// Grade de fotos com ampliação (lightbox) num <dialog> nativo.
+// Sem JavaScript, cada miniatura continua sendo um link para a foto inteira.
+import { medidas } from '../utils/imagens.mjs';
+
+interface Foto {
+  imagem: string;
+  legenda?: string;
+  descricao?: string;
+}
+interface Props {
+  fotos: Foto[];
+  /** Nome da coleção, usado no rótulo do diálogo (ex.: "Casamentos"). */
+  rotulo?: string;
+}
+
+const { fotos, rotulo = 'Fotos' } = Astro.props;
+const itens = await Promise.all(fotos.map(async (f) => ({ ...f, ...(await medidas(f.imagem)) })));
+---
+<div class="fotos-bloco" data-fotos>
+  <ul class="fotos" role="list">
+    {itens.map((f, i) => (
+      <li>
+        <figure>
+          <a href={f.imagem} data-indice={i} data-legenda={f.legenda ?? ''}>
+            <img src={f.imagem} alt={f.descricao || f.legenda || ''} width={f.width} height={f.height} loading="lazy" decoding="async" />
+          </a>
+          {f.legenda && <figcaption>{f.legenda}</figcaption>}
+        </figure>
+      </li>
+    ))}
+  </ul>
+
+  <dialog class="lightbox" aria-label={`${rotulo} — foto ampliada`}>
+    <div class="lb-palco">
+      <img class="lb-img" alt="" />
+    </div>
+    <div class="lb-barra">
+      <p class="lb-legenda" aria-live="polite"></p>
+      <p class="lb-contador"></p>
+      <div class="lb-botoes">
+        <button type="button" class="lb-anterior" aria-label="Foto anterior">←</button>
+        <button type="button" class="lb-proxima" aria-label="Próxima foto">→</button>
+        <a class="lb-abrir" href="" target="_blank" rel="noopener">Abrir original</a>
+        <button type="button" class="lb-fechar" aria-label="Fechar">Fechar</button>
+      </div>
+    </div>
+  </dialog>
+</div>
+
+<script>
+  for (const bloco of document.querySelectorAll<HTMLElement>('[data-fotos]')) {
+    const links = [...bloco.querySelectorAll<HTMLAnchorElement>('a[data-indice]')];
+    const dialog = bloco.querySelector('dialog')!;
+    const img = dialog.querySelector<HTMLImageElement>('.lb-img')!;
+    const legenda = dialog.querySelector('.lb-legenda')!;
+    const contador = dialog.querySelector('.lb-contador')!;
+    const abrir = dialog.querySelector<HTMLAnchorElement>('.lb-abrir')!;
+    const anterior = dialog.querySelector<HTMLButtonElement>('.lb-anterior')!;
+    const proxima = dialog.querySelector<HTMLButtonElement>('.lb-proxima')!;
+    let atual = 0;
+    let origem: HTMLElement | null = null;
+
+    const mostrar = (i: number) => {
+      atual = (i + links.length) % links.length;
+      const a = links[atual];
+      const mini = a.querySelector('img')!;
+      img.src = a.href;
+      img.alt = mini.alt;
+      legenda.textContent = a.dataset.legenda ?? '';
+      contador.textContent = links.length > 1 ? `${atual + 1} de ${links.length}` : '';
+      abrir.href = a.href;
+      anterior.hidden = proxima.hidden = links.length < 2;
+      // Carrega a vizinha para a troca ser imediata.
+      if (links.length > 1) new Image().src = links[(atual + 1) % links.length].href;
+    };
+
+    links.forEach((a, i) => a.addEventListener('click', (e) => {
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+      e.preventDefault();
+      origem = a;
+      mostrar(i);
+      dialog.showModal();
+    }));
+    anterior.addEventListener('click', () => mostrar(atual - 1));
+    proxima.addEventListener('click', () => mostrar(atual + 1));
+    dialog.querySelector('.lb-fechar')!.addEventListener('click', () => dialog.close());
+    // Clique fora da foto e da barra fecha.
+    dialog.addEventListener('click', (e) => { if (e.target === dialog || (e.target as HTMLElement).classList.contains('lb-palco')) dialog.close(); });
+    dialog.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') { e.preventDefault(); mostrar(atual - 1); }
+      if (e.key === 'ArrowRight') { e.preventDefault(); mostrar(atual + 1); }
+    });
+    dialog.addEventListener('close', () => { img.removeAttribute('src'); origem?.focus(); });
+
+    // Deslizar o dedo para os lados troca de foto.
+    let x0: number | null = null;
+    dialog.addEventListener('touchstart', (e) => { x0 = e.touches[0].clientX; }, { passive: true });
+    dialog.addEventListener('touchend', (e) => {
+      if (x0 === null) return;
+      const dx = e.changedTouches[0].clientX - x0;
+      if (Math.abs(dx) > 50) mostrar(atual + (dx < 0 ? 1 : -1));
+      x0 = null;
+    });
+  }
+</script>
+
+<style>
+  .fotos { list-style: none; margin: 0; padding: 0; columns: 4 160px; column-gap: 20px; }
+  @media (min-width: 768px) { .fotos { column-gap: 28px; } }
+  .fotos li { break-inside: avoid; margin: 0 0 24px; }
+  .fotos figure { margin: 0; }
+  .fotos a { display: block; background: var(--white); border: 1px solid var(--line); padding: 6px; transition: border-color .15s; }
+  .fotos a:hover { border-color: var(--navy); }
+  .fotos img { width: 100%; height: auto; background: var(--paper); }
+  .fotos figcaption { padding-top: 8px; }
+
+  .lightbox { width: 100vw; height: 100dvh; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; background: rgba(20, 22, 26, .94); color: var(--cream); }
+  .lightbox[open] { display: flex; flex-direction: column; }
+  .lightbox::backdrop { background: rgba(20, 22, 26, .6); }
+  .lb-palco { flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center; padding: 16px; }
+  .lb-img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; background: var(--paper); }
+  .lb-barra { display: grid; grid-template-columns: 1fr auto; gap: 6px 20px; align-items: center; padding: 12px var(--gut) max(16px, env(safe-area-inset-bottom)); border-top: 1px solid rgba(249, 248, 244, .15); }
+  .lb-legenda { font-size: 16px; line-height: 1.4; grid-column: 1 / -1; }
+  .lb-legenda:empty { display: none; }
+  .lb-contador { font-size: 13px; color: rgba(249, 248, 244, .7); }
+  .lb-botoes { display: flex; gap: 8px; align-items: center; justify-content: flex-end; flex-wrap: wrap; }
+  .lb-botoes button, .lb-abrir { font: inherit; font-size: 15px; color: var(--cream); background: transparent; border: 1px solid rgba(249, 248, 244, .35); border-radius: 8px; padding: 8px 14px; cursor: pointer; text-decoration: none; line-height: 1.2; }
+  .lb-botoes button:hover, .lb-abrir:hover { background: rgba(249, 248, 244, .12); }
+  .lb-botoes [hidden] { display: none; }
+  @media (max-width: 520px) { .lb-abrir { display: none; } }
+</style>

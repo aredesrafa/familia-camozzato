@@ -1,0 +1,37 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Fotos from '../../components/Fotos.astro';
+
+export async function getStaticPaths() {
+  const galerias = (await getCollection('galerias')).sort((a, b) => a.data.ordem - b.data.ordem);
+  return galerias.map((g, i) => ({
+    params: { id: g.id },
+    props: { galeria: g, anterior: galerias[i - 1], proxima: galerias[i + 1] },
+  }));
+}
+
+const { galeria, anterior, proxima } = Astro.props;
+const d = galeria.data;
+---
+<Base title={`${d.titulo} · Fotos`} description={d.descricao ?? `Fotos da família Camozzato: ${d.titulo.toLowerCase()}.`}>
+  <header class="page-head">
+    <div class="wrap">
+      <p class="meta"><a class="link" href="/fotos/">Álbum de fotos</a> · {d.fotos.length} {d.fotos.length === 1 ? 'foto' : 'fotos'}</p>
+      <h1>{d.titulo}</h1>
+      {d.descricao && <p class="lead">{d.descricao}</p>}
+    </div>
+  </header>
+  <div class="wrap block">
+    <Fotos fotos={d.fotos} rotulo={d.titulo} />
+    <nav class="pager" aria-label="Outras galerias">
+      {anterior ? <a class="link" href={`/fotos/${anterior.id}/`}>← {anterior.data.titulo}</a> : <span></span>}
+      {proxima && <a class="link" href={`/fotos/${proxima.id}/`}>{proxima.data.titulo} →</a>}
+    </nav>
+  </div>
+</Base>
+
+<style>
+  .page-head .meta { margin-bottom: 14px; }
+  .pager { display: flex; justify-content: space-between; gap: 16px 32px; flex-wrap: wrap; border-top: 1px solid var(--line); margin-top: 24px; padding-top: 24px; font-size: 17px; }
+</style>

@@ -1,0 +1,56 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { medidas } from '../../utils/imagens.mjs';
+
+const galerias = await Promise.all(
+  (await getCollection('galerias'))
+    .sort((a, b) => a.data.ordem - b.data.ordem)
+    .map(async (g) => {
+      const capa = g.data.capa ?? g.data.fotos[0]?.imagem;
+      return { id: g.id, ...g.data, capa, medidas: await medidas(capa) };
+    }),
+);
+const total = galerias.reduce((n, g) => n + g.fotos.length, 0);
+---
+<Base title="Fotos" description="Álbum de fotos da família Camozzato: imigrantes, famílias, casamentos, formaturas e lembranças.">
+  <header class="page-head">
+    <div class="wrap">
+      <p class="meta">Acervo</p>
+      <h1>Álbum de fotos</h1>
+      <p class="lead">{total} fotografias guardadas pelas famílias e reunidas desde o primeiro site, em 2006. Tem uma foto que não está aqui? <a class="link" href="/#contribua">Envie para nós</a>.</p>
+    </div>
+  </header>
+  <div class="wrap block">
+    <ul class="galerias" role="list">
+      {galerias.map((g) => (
+        <li>
+          <a href={`/fotos/${g.id}/`}>
+            {g.capa && (
+              <span class="capa"><img src={g.capa} alt="" width={g.medidas.width} height={g.medidas.height} loading="lazy" decoding="async" /></span>
+            )}
+            <span class="txt">
+              <h2>{g.titulo}</h2>
+              <span class="meta">{g.fotos.length} {g.fotos.length === 1 ? 'foto' : 'fotos'}</span>
+              {g.descricao && <p>{g.descricao}</p>}
+            </span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</Base>
+
+<style>
+  .page-head .meta { margin-bottom: 14px; }
+  .galerias { list-style: none; margin: 0; padding: 0; display: grid; gap: 20px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr)); }
+  @media (min-width: 768px) { .galerias { gap: 28px; } }
+  .galerias a { display: flex; flex-direction: column; height: 100%; background: var(--white); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; text-decoration: none; color: inherit; transition: border-color .15s; }
+  .galerias a:hover { border-color: var(--navy); }
+  .capa { display: block; aspect-ratio: 4 / 3; background: var(--paper); border-bottom: 1px solid var(--line); }
+  .capa img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
+  .txt { display: block; padding: 16px 20px 20px; }
+  h2 { font-size: 22px; line-height: 1.25; }
+  .txt .meta { display: block; margin-top: 4px; }
+  .txt p { font-size: 15px; color: var(--ink-soft); margin-top: 10px; line-height: 1.5; }
+</style>

@@ -1,6 +1,8 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
+import Fotos from '../../components/Fotos.astro';
+import { medidas } from '../../utils/imagens.mjs';
 
 export async function getStaticPaths() {
   const cidades = await getCollection('cidades');
@@ -10,6 +12,7 @@ export async function getStaticPaths() {
 const { cidade } = Astro.props;
 const d = cidade.data;
 const { Content } = await render(cidade);
+const m = await medidas(d.imagem);
 ---
 <Base title={d.nome} description={d.resumo}>
   <header class="page-head">
@@ -19,12 +22,27 @@ const { Content } = await render(cidade);
     </div>
   </header>
   <article class="wrap block">
-    {d.imagem && <figure class="frame"><img src={d.imagem} alt={d.imagem_alt ?? ''} /></figure>}
+    {d.imagem && (
+      <figure class="frame">
+        <img src={d.imagem} alt={d.imagem_alt ?? ''} width={m.width} height={m.height} />
+        {d.imagem_alt && <figcaption>{d.imagem_alt}</figcaption>}
+      </figure>
+    )}
     <div class="prose"><Content /></div>
   </article>
+  {d.fotos?.length ? (
+    <section class="band">
+      <div class="wrap block">
+        <h2 class="fotos-titulo">Mapas e imagens</h2>
+        <Fotos fotos={d.fotos} rotulo={d.nome} />
+      </div>
+    </section>
+  ) : null}
 </Base>
 
 <style>
   .page-head .meta { margin-bottom: 14px; }
-  .frame { max-width: 720px; margin-bottom: 40px; }
+  .frame { max-width: 720px; margin-bottom: 40px; width: fit-content; }
+  .frame img { height: auto; }
+  .fotos-titulo { margin-bottom: 24px; }
 </style>

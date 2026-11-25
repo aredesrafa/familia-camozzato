@@ -1,6 +1,8 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
+import Fotos from '../../components/Fotos.astro';
+import { medidas } from '../../utils/imagens.mjs';
 
 export async function getStaticPaths() {
   const historias = await getCollection('historias');
@@ -10,6 +12,7 @@ export async function getStaticPaths() {
 const { historia } = Astro.props;
 const d = historia.data;
 const { Content } = await render(historia);
+const m = await medidas(d.imagem);
 ---
 <Base title={d.titulo} description={d.resumo}>
   <header class="page-head">
@@ -23,15 +26,25 @@ const { Content } = await render(historia);
     <div class="prose"><Content /></div>
     {d.imagem && (
       <figure class="frame">
-        <img src={d.imagem} alt={d.imagem_alt ?? ''} />
+        <img src={d.imagem} alt={d.imagem_alt ?? ''} width={m.width} height={m.height} />
         {d.imagem_alt && <figcaption>{d.imagem_alt}</figcaption>}
       </figure>
     )}
   </article>
+  {d.fotos?.length ? (
+    <section class="band">
+      <div class="wrap block">
+        <h2 class="fotos-titulo">Mais fotos</h2>
+        <Fotos fotos={d.fotos} rotulo={d.titulo} />
+      </div>
+    </section>
+  ) : null}
 </Base>
 
 <style>
   .page-head .meta { margin-bottom: 14px; }
   .layout { display: grid; gap: 40px; }
   @media (min-width: 980px) { .layout { grid-template-columns: 1fr 380px; gap: 64px; align-items: start; } .frame { position: sticky; top: 24px; } }
+  .frame img { height: auto; }
+  .fotos-titulo { margin-bottom: 24px; }
 </style>
