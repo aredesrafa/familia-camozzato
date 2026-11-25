@@ -43,7 +43,6 @@ Hospedagem na Cloudflare, num Worker só com arquivos estáticos (`wrangler.json
 - **Publicar à mão** (com `wrangler login` feito): `npm run build && npx wrangler deploy`
 - **Redirecionamentos** dos endereços do site antigo: `public/_redirects`.
 - **Node:** a versão vem do `.nvmrc`.
-- `netlify.toml` é da hospedagem anterior (Netlify). Pode ser apagado quando o projeto no Netlify for desligado.
 
 ## Login no CMS (Pages CMS)
 

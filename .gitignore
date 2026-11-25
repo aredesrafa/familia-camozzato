@@ -23,8 +23,5 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 
-# Local Netlify folder
-.netlify
-
-# Netlify CLI (link local do projeto)
-.netlify/
+# Wrangler (Cloudflare) — arquivos locais
+.wrangler/
