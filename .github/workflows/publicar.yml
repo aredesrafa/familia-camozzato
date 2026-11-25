@@ -1,0 +1,64 @@
+# Disparado pelo botão "Publicar site" do Pages CMS.
+# Leva as alterações salvas na branch `conteudo` (rascunhos) para `main` (site no ar).
+# Só esta etapa gera uma publicação de produção no Netlify.
+name: Publicar site
+
+on:
+  workflow_dispatch:
+    inputs:
+      payload:
+        description: Dados enviados pelo Pages CMS (JSON)
+        required: false
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publicar
+  cancel-in-progress: false
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Juntar rascunhos com o site no ar
+        id: merge
+        env:
+          PAYLOAD: ${{ inputs.payload }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin conteudo
+          if git merge-base --is-ancestor origin/conteudo HEAD; then
+            echo "Nada novo para publicar." | tee -a "$GITHUB_STEP_SUMMARY"
+            echo "novo=nao" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          QUEM=$(printf '%s' "$PAYLOAD" | jq -r '.triggeredBy.name // empty' 2>/dev/null || true)
+          git merge --no-ff origin/conteudo -m "Publica conteúdo${QUEM:+ (pedido por $QUEM)}"
+          echo "novo=sim" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/setup-node@v4
+        if: steps.merge.outputs.novo == 'sim'
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Conferir se o site compila
+        if: steps.merge.outputs.novo == 'sim'
+        run: |
+          npm ci
+          npm run build
+
+      - name: Publicar
+        if: steps.merge.outputs.novo == 'sim'
+        run: |
+          git push origin HEAD:main
+          git push origin HEAD:conteudo || echo "A branch conteudo mudou durante a publicação; ela será sincronizada na próxima."
+          echo "Publicado. O Netlify atualiza o site em cerca de 1 minuto." >> "$GITHUB_STEP_SUMMARY"

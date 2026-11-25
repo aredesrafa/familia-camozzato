@@ -3,6 +3,10 @@
   command = "npm run build"
   publish = "dist"
 
+  # Pula a publicação (sem gastar créditos) quando o commit não muda nada do site,
+  # por exemplo só README, .pages.yml ou workflows do GitHub.
+  ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF -- src public package.json package-lock.json astro.config.mjs tsconfig.json netlify.toml"
+
 [build.environment]
   NODE_VERSION = "24"
 

@@ -1,0 +1,35 @@
+# Quando o código muda em `main` (trabalho de desenvolvimento), leva a mudança
+# também para a branch `conteudo`, para os rascunhos usarem a versão mais nova do site.
+name: Sincronizar rascunhos
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sincronizar-conteudo
+  cancel-in-progress: false
+
+jobs:
+  sincronizar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: conteudo
+          fetch-depth: 0
+
+      - name: Juntar main em conteudo
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin main
+          if git merge-base --is-ancestor origin/main HEAD; then
+            echo "conteudo já está em dia com main."
+            exit 0
+          fi
+          git merge --no-edit origin/main
+          git push origin HEAD:conteudo
