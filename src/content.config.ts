@@ -22,6 +22,8 @@ const historias = defineCollection({
     imagem_alt: z.string().optional(),
     ordem: z.number().default(99),
     destaque: z.boolean().default(false),
+    /** Mostra os botões de download do livro Idos Tempos na história. */
+    livro: z.boolean().default(false),
     fotos: z.array(foto).optional(),
   }),
 });
