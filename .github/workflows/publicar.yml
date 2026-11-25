@@ -1,6 +1,6 @@
 # Disparado pelo botão "Publicar site" do Pages CMS.
 # Leva as alterações salvas na branch `conteudo` (rascunhos) para `main` (site no ar).
-# Só esta etapa gera uma publicação de produção no Netlify.
+# O último job envia o site para a Cloudflare.
 name: Publicar site
 
 on:
@@ -21,6 +21,8 @@ concurrency:
 jobs:
   publicar:
     runs-on: ubuntu-latest
+    outputs:
+      novo: ${{ steps.merge.outputs.novo }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -61,4 +63,12 @@ jobs:
         run: |
           git push origin HEAD:main
           git push origin HEAD:conteudo || echo "A branch conteudo mudou durante a publicação; ela será sincronizada na próxima."
-          echo "Publicado. O Netlify atualiza o site em cerca de 1 minuto." >> "$GITHUB_STEP_SUMMARY"
+          echo "Alterações levadas para main." >> "$GITHUB_STEP_SUMMARY"
+
+  cloudflare:
+    needs: publicar
+    if: needs.publicar.outputs.novo == 'sim'
+    uses: ./.github/workflows/cloudflare.yml
+    with:
+      ref: main
+    secrets: inherit

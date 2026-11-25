@@ -12,7 +12,7 @@ actions:
     cancelable: false
     confirm:
       title: Publicar o site?
-      message: "Todas as alterações salvas até agora vão para o site no ar em cerca de 2 minutos. O plano gratuito permite poucas publicações por mês: junte várias alterações antes de publicar."
+      message: "Todas as alterações salvas até agora vão para o site no ar em cerca de 2 minutos. Antes, confira a prévia em conteudo-familia-camozzato.infinitybuilder.workers.dev"
       button: Publicar
 
 media:
