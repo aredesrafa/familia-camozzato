@@ -1,0 +1,10 @@
+nome: "Olimpia Maria"
+sobrenome: "Camozzato"
+sexo: F
+nascimento: "18/02/1875"
+pai: "src/content/pessoas/giuseppe-camozzato-1839.yml"
+mae: "src/content/pessoas/marianna-de-lucchi.yml"
+notas: "Religiosa: Madre Maria Juliana, da Congregação Imaculado Coração de Maria."
+fontes:
+  - "Primeiros imigrantes (lista do Vapor Hohenzollern)"
+  - "Álbum de fotos (legenda)"

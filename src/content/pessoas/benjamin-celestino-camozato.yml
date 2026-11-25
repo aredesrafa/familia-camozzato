@@ -1,0 +1,17 @@
+nome: "Benjamin Celestino"
+sobrenome: "Camozato"
+sexo: M
+nascimento: "19/05/1885"
+nascimento_local: "Porto Alegre"
+falecimento: "04/05/1964"
+falecimento_local: "Porto Alegre"
+pai: "src/content/pessoas/oscar-pereira-da-costa.yml"
+mae: "src/content/pessoas/vittoria-camozzato-1869.yml"
+conjuges:
+  - pessoa: "src/content/pessoas/ofelia-fontoura-borges.yml"
+  - pessoa: "src/content/pessoas/acidalia-centeno-lima.yml"
+    casamento: "1936"
+notas: "Dentista formado em 1904, esperantista e pioneiro do cinema no Rio Grande do Sul."
+fontes:
+  - "Destaques"
+  - "Lista de colaboradores (linha de descendência)"

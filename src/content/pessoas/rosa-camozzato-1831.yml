@@ -1,0 +1,13 @@
+nome: "Rosa"
+sobrenome: "Camozzato"
+sexo: F
+nascimento: "21/08/1831"
+nascimento_local: "Treviso"
+pai: "src/content/pessoas/domenico-camozzato.yml"
+mae: "src/content/pessoas/anna-tesser.yml"
+conjuges:
+  - pessoa: "src/content/pessoas/gaetano-gallina.yml"
+    casamento: "10/04/1855"
+notas: "Registro em São Paulo em 22/01/1889. O destino da família ainda não foi localizado."
+fontes:
+  - "Primeiros imigrantes (Rosa e Gaetano, Emigrazione Veneta)"

@@ -53,4 +53,40 @@ const marcos = defineCollection({
   }),
 });
 
-export const collections = { historias, cidades, nucleos, marcos };
+// Pessoas da árvore genealógica. Pai, mãe e cônjuges guardam o caminho do arquivo da outra pessoa
+// (formato do campo de referência do Pages CMS, ex.: "src/content/pessoas/giuseppe-camozzato-1839.yml").
+// As relações (filhos, cônjuges dos dois lados) são montadas em src/lib/arvore.ts.
+const opcional = z.string().nullish().transform((v) => v?.trim() || undefined);
+const pessoas = defineCollection({
+  loader: glob({
+    base: './src/content/pessoas',
+    pattern: '**/*.{yml,yaml}',
+    // O id é exatamente o nome do arquivo, para bater com as referências gravadas pelo CMS.
+    generateId: ({ entry }) => entry.replace(/\.ya?ml$/, ''),
+  }),
+  schema: z.object({
+    nome: z.string(),
+    sobrenome: opcional,
+    sexo: z.enum(['M', 'F']),
+    nascimento: opcional,
+    nascimento_local: opcional,
+    falecimento: opcional,
+    falecimento_local: opcional,
+    pai: opcional,
+    mae: opcional,
+    conjuges: z
+      .array(z.object({ pessoa: opcional, casamento: opcional }))
+      .nullish()
+      .transform((v) => v ?? []),
+    foto: opcional,
+    foto_alt: opcional,
+    vivo: z.boolean().nullish().transform((v) => v ?? false),
+    notas: opcional,
+    fontes: z
+      .array(z.string().nullish())
+      .nullish()
+      .transform((v) => (v ?? []).filter((x): x is string => !!x?.trim())),
+  }),
+});
+
+export const collections = { historias, cidades, nucleos, marcos, pessoas };

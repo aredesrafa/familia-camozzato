@@ -1,0 +1,6 @@
+nome: "Angelo"
+sobrenome: "Camozzato"
+sexo: M
+pai: "src/content/pessoas/francisco-camozzato-1888.yml"
+fontes:
+  - "Lista de colaboradores (linha de descendência)"

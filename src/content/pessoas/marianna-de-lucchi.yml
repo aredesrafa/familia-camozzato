@@ -1,0 +1,7 @@
+nome: "Marianna"
+sobrenome: "De Lucchi"
+sexo: F
+pai: "src/content/pessoas/odoardo-de-lucchi.yml"
+mae: "src/content/pessoas/elisabetta-scandiuzzi.yml"
+fontes:
+  - "Primeiros imigrantes (lista do Vapor Hohenzollern)"

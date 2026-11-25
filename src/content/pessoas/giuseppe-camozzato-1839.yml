@@ -1,0 +1,13 @@
+nome: "Giuseppe"
+sobrenome: "Camozzato"
+sexo: M
+nascimento: "02/09/1839"
+nascimento_local: "Montebelluna, Treviso"
+pai: "src/content/pessoas/domenico-camozzato.yml"
+mae: "src/content/pessoas/anna-tesser.yml"
+conjuges:
+  - pessoa: "src/content/pessoas/marianna-de-lucchi.yml"
+    casamento: "17/11/1863"
+notas: "Chegou ao Rio de Janeiro em 12/01/1880 pelo Vapor Hohenzollern (registros 446 a 451). Matrícula na Colônia Caxias em 15/02/1880; depois Antonio Prado."
+fontes:
+  - "Primeiros imigrantes (lista do Vapor Hohenzollern)"

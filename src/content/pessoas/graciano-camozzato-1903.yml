@@ -1,0 +1,14 @@
+nome: "Graciano"
+sobrenome: "Camozzato"
+sexo: M
+nascimento: "1903"
+nascimento_local: "Antonio Prado"
+pai: "src/content/pessoas/angelo-camozzato-1866.yml"
+mae: "src/content/pessoas/giudita-ruzzarin.yml"
+conjuges:
+  - pessoa: "src/content/pessoas/albina-camozzato-esposa-graciano.yml"
+notas: "Comerciante em Sananduva (loja A Lutadora e moinho da farinha Beatriz); mudou-se para Porto Alegre em 1952."
+fontes:
+  - "Cidades — Sananduva"
+  - "Destaques"
+  - "Lista de colaboradores (linha de descendência)"

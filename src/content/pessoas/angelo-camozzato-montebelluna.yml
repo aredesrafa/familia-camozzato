@@ -1,0 +1,9 @@
+nome: "Angelo"
+sobrenome: "Camozzato"
+sexo: M
+nascimento_local: "Montebelluna, Treviso"
+conjuges:
+  - pessoa: "src/content/pessoas/anna-innocente.yml"
+notas: "Pai do imigrante Antonio Camozzato (n. 1845)."
+fontes:
+  - "Primeiros imigrantes (Antonio e Vittoria, Hospedaria dos Imigrantes)"

@@ -1,0 +1,8 @@
+nome: "Odoardo"
+sobrenome: "De Lucchi"
+sexo: M
+conjuges:
+  - pessoa: "src/content/pessoas/elisabetta-scandiuzzi.yml"
+notas: "Sogro de Giuseppe Camozzato; veio no mesmo navio (linhas 469 a 473)."
+fontes:
+  - "Primeiros imigrantes (lista do Vapor Hohenzollern)"

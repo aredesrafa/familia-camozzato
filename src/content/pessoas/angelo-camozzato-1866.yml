@@ -1,0 +1,14 @@
+nome: "Angelo"
+sobrenome: "Camozzato"
+sexo: M
+nascimento: "28/05/1866"
+nascimento_local: "Treviso"
+pai: "src/content/pessoas/giuseppe-camozzato-1839.yml"
+mae: "src/content/pessoas/marianna-de-lucchi.yml"
+conjuges:
+  - pessoa: "src/content/pessoas/giudita-ruzzarin.yml"
+notas: "Mudou-se com a família de Antonio Prado para Sananduva por volta de 1915."
+fontes:
+  - "Cidades — Sananduva"
+  - "Lista de colaboradores (linha de descendência)"
+  - "Primeiros imigrantes (lista do Vapor Hohenzollern)"

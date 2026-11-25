@@ -1,0 +1,8 @@
+nome: "Vergílio"
+sobrenome: "Camozzato"
+sexo: M
+pai: "src/content/pessoas/antonio-camozzato-1892.yml"
+conjuges:
+  - pessoa: "src/content/pessoas/rosalina-moraes.yml"
+fontes:
+  - "Lista de colaboradores (linha de descendência)"

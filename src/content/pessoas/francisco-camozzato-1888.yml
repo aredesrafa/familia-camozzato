@@ -1,0 +1,15 @@
+nome: "Francisco"
+sobrenome: "Camozzato"
+sexo: M
+nascimento: "19/09/1888"
+nascimento_local: "Caxias do Sul"
+pai: "src/content/pessoas/giuseppe-camozzato-1839.yml"
+mae: "src/content/pessoas/marianna-de-lucchi.yml"
+conjuges:
+  - pessoa: "src/content/pessoas/matilde-serafim.yml"
+  - pessoa: "src/content/pessoas/angela-gonzato.yml"
+notas: "Filho mais novo de Giuseppe e Marianna. Seus descendentes, em Santa Catarina e no Paraná, assinam Camuzzato."
+fontes:
+  - "Cidades — Caçador"
+  - "Lista de colaboradores (linha de descendência)"
+  - "Primeiros imigrantes (lista do Vapor Hohenzollern)"

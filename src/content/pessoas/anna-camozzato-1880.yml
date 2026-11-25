@@ -1,0 +1,9 @@
+nome: "Anna"
+sobrenome: "Camozzato"
+sexo: F
+nascimento: "08/05/1880"
+nascimento_local: "Treviso"
+pai: "src/content/pessoas/antonio-camozzato-1845.yml"
+mae: "src/content/pessoas/vittoria-minotto.yml"
+fontes:
+  - "Primeiros imigrantes (Antonio e Vittoria, Hospedaria dos Imigrantes)"

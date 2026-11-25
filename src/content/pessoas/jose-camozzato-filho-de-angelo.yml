@@ -1,0 +1,10 @@
+nome: "José"
+sobrenome: "Camozzato"
+sexo: M
+pai: "src/content/pessoas/angelo-camozzato-1866.yml"
+mae: "src/content/pessoas/giudita-ruzzarin.yml"
+notas: "José (Giuseppe), autor do livro \"Idos Tempos\". Foi para Passo Fundo em 1959."
+fontes:
+  - "Cidades — Passo Fundo"
+  - "Cidades — Sananduva"
+  - "Lista de colaboradores (linha de descendência)"

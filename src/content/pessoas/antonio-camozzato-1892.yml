@@ -1,0 +1,14 @@
+nome: "Antonio"
+sobrenome: "Camozzato"
+sexo: M
+nascimento: "1892"
+nascimento_local: "Caxias do Sul"
+pai: "src/content/pessoas/angelo-camozzato-1866.yml"
+mae: "src/content/pessoas/giudita-ruzzarin.yml"
+conjuges:
+  - pessoa: "src/content/pessoas/catarina-begnini.yml"
+notas: "Professor em Antonio Prado e comerciante em Sananduva e Lagoa Vermelha. Em 1933 levou os Camozzato a Pato Branco, onde instalou um moinho."
+fontes:
+  - "Cidades — Pato Branco"
+  - "Destaques"
+  - "Lista de colaboradores (linha de descendência)"

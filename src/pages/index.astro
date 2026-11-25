@@ -37,7 +37,7 @@ const rotas = [
         <h1>{home.hero_titulo}</h1>
         <p class="lead">{home.hero_texto}</p>
         <div class="actions">
-          <a class="btn btn-primary" href="#arvore">Explorar a árvore <span aria-hidden="true">→</span></a>
+          <a class="btn btn-primary" href="/arvore/">Explorar a árvore <span aria-hidden="true">→</span></a>
           <a class="link" href="/historias/">Ler as histórias</a>
         </div>
       </div>
@@ -64,7 +64,7 @@ const rotas = [
         <div>
           <h2>{home.arvore_titulo}</h2>
           <p class="lead">{home.arvore_texto}</p>
-          <p class="meta">A árvore interativa está em construção.</p>
+          <a class="btn btn-outline" href="/arvore/">Abrir a árvore <span aria-hidden="true">→</span></a>
         </div>
         <TreePreview />
       </div>

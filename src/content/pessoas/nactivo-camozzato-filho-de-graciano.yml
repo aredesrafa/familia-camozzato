@@ -1,0 +1,10 @@
+nome: "Nactivo"
+sobrenome: "Camozzato"
+sexo: M
+pai: "src/content/pessoas/graciano-camozzato-1903.yml"
+mae: "src/content/pessoas/albina-camozzato-esposa-graciano.yml"
+notas: "Piloto: venceu com a carretera Ford nº 6."
+fontes:
+  - "Destaques"
+  - "Lista de colaboradores (linha de descendência)"
+  - "Álbum de fotos (legenda)"

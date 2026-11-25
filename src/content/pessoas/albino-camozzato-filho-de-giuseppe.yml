@@ -1,0 +1,8 @@
+nome: "Albino"
+sobrenome: "Camozzato"
+sexo: M
+pai: "src/content/pessoas/giuseppe-camozzato-1839.yml"
+mae: "src/content/pessoas/marianna-de-lucchi.yml"
+notas: "Data de nascimento ilegível na lista de passageiros."
+fontes:
+  - "Primeiros imigrantes (lista do Vapor Hohenzollern)"

@@ -136,3 +136,62 @@ content:
       - { name: titulo, label: Título, type: string, required: true }
       - { name: descricao, label: Descrição, type: text, required: true }
       - { name: home, label: Mostrar na página inicial, type: boolean, default: false }
+
+  # Árvore genealógica: uma entrada por pessoa. Filhos e o outro lado do casamento são deduzidos
+  # automaticamente (src/arvore.ts), então basta indicar pai, mãe e cônjuge(s).
+  - name: pessoas
+    label: Árvore — pessoas
+    type: collection
+    path: src/content/pessoas
+    format: yaml
+    filename:
+      # nome + data/hora da criação: dois "Antonio Camozzato" nunca colidem
+      template: "{nome}-{sobrenome}-{year}{month}{day}{hour}{minute}{second}.yml"
+      field: false
+    operations:
+      # renomear o arquivo quebraria as ligações de pai, mãe e cônjuges
+      rename: false
+    view:
+      fields: [nome, sobrenome, nascimento]
+      primary: nome
+      sort: [nome, sobrenome]
+      default: { sort: nome, order: asc }
+    fields:
+      - { name: nome, label: Nome, type: string, required: true, description: "Prenome(s). Ex.: Olimpia Maria" }
+      - { name: sobrenome, label: Sobrenome, type: string, description: "Como a pessoa assinava: Camozzato, Camuzzato, Camossato…" }
+      - name: sexo
+        label: Sexo
+        type: select
+        required: true
+        options:
+          values:
+            - { name: M, label: Masculino }
+            - { name: F, label: Feminino }
+      - { name: nascimento, label: Nascimento, type: string, description: "Ex.: 02/09/1839, 1903 ou c. 1880" }
+      - { name: nascimento_local, label: Local de nascimento, type: string }
+      - { name: falecimento, label: Falecimento, type: string, description: "Ex.: 04/05/1964 ou c. 1950" }
+      - { name: falecimento_local, label: Local de falecimento, type: string }
+      - name: pai
+        label: Pai
+        type: reference
+        options: { collection: pessoas, value: "{path}", label: "{nome} {sobrenome} {nascimento}", search: "nome,sobrenome" }
+      - name: mae
+        label: Mãe
+        type: reference
+        options: { collection: pessoas, value: "{path}", label: "{nome} {sobrenome} {nascimento}", search: "nome,sobrenome" }
+      - name: conjuges
+        label: Cônjuges
+        description: "Basta cadastrar o casamento em uma das duas pessoas."
+        type: object
+        list: true
+        fields:
+          - name: pessoa
+            label: Cônjuge
+            type: reference
+            options: { collection: pessoas, value: "{path}", label: "{nome} {sobrenome} {nascimento}", search: "nome,sobrenome" }
+          - { name: casamento, label: Data/local do casamento, type: string }
+      - { name: foto, label: Foto, type: image }
+      - { name: foto_alt, label: Descrição da foto, type: text }
+      - { name: vivo, label: Pessoa viva, type: boolean, default: false, description: "Se marcado, o site mostra só o nome e o parentesco (sem datas, locais, notas nem foto)." }
+      - { name: notas, label: Notas, type: text }
+      - { name: fontes, label: Fontes, type: string, list: true, description: "De onde vem cada informação. Ex.: Lista do Vapor Hohenzollern, certidão, livro de José Camozzato" }

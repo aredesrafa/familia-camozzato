@@ -1,0 +1,7 @@
+nome: "Alderico"
+sobrenome: "Camozzato"
+sexo: M
+pai: "src/content/pessoas/graciano-camozzato-1903.yml"
+mae: "src/content/pessoas/albina-camozzato-esposa-graciano.yml"
+fontes:
+  - "Álbum de fotos (legenda)"
