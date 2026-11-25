@@ -16,6 +16,8 @@ concurrency:
 jobs:
   sincronizar:
     runs-on: ubuntu-latest
+    outputs:
+      mudou: ${{ steps.merge.outputs.mudou }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -23,13 +25,24 @@ jobs:
           fetch-depth: 0
 
       - name: Juntar main em conteudo
+        id: merge
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git fetch origin main
           if git merge-base --is-ancestor origin/main HEAD; then
             echo "conteudo já está em dia com main."
+            echo "mudou=nao" >> "$GITHUB_OUTPUT"
             exit 0
           fi
           git merge --no-edit origin/main
           git push origin HEAD:conteudo
+          echo "mudou=sim" >> "$GITHUB_OUTPUT"
+
+  previa:
+    needs: sincronizar
+    if: needs.sincronizar.outputs.mudou == 'sim'
+    uses: ./.github/workflows/cloudflare.yml
+    with:
+      ref: conteudo
+    secrets: inherit
