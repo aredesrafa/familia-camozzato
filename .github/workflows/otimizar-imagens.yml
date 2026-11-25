@@ -1,0 +1,74 @@
+# Otimiza automaticamente as imagens enviadas pelo Pages CMS (ou por qualquer push).
+# Roda quando um push muda algo em public/img; só mexe nas imagens novas ou alteradas.
+# Mantém nome e formato de cada arquivo (JPEG, PNG ou WebP), então nenhum link quebra:
+# lado maior de até 1600 px, rotação corrigida, sem metadados, recompressão (scripts/otimizar-imagens.mjs).
+# Depois grava o resultado na mesma branch e atualiza a prévia (conteudo) ou o site (main).
+name: Otimizar imagens enviadas
+
+on:
+  push:
+    branches: [conteudo, main]
+    paths: ['public/img/**']
+
+permissions:
+  contents: write
+
+concurrency:
+  group: otimizar-imagens-${{ github.ref_name }}
+  cancel-in-progress: false
+
+jobs:
+  otimizar:
+    runs-on: ubuntu-latest
+    outputs:
+      mudou: ${{ steps.otimizar.outputs.mudou }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+
+      - name: Otimizar as imagens novas ou alteradas
+        id: otimizar
+        env:
+          ANTES: ${{ github.event.before }}
+          BRANCH: ${{ github.ref_name }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # Commit anterior ao push (ou o pai, se a branch acabou de ser criada)
+          if ! git cat-file -e "${ANTES}^{commit}" 2>/dev/null; then ANTES=$(git rev-parse HEAD~1); fi
+          mapfile -t ARQUIVOS < <(git diff --name-only --diff-filter=AM "$ANTES" HEAD -- public/img | grep -iE '\.(jpe?g|png|webp)$' || true)
+          if [ ${#ARQUIVOS[@]} -eq 0 ]; then
+            echo "Nenhuma imagem nova para otimizar." | tee -a "$GITHUB_STEP_SUMMARY"
+            echo "mudou=nao" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          { echo '```'; node scripts/otimizar-imagens.mjs --manter-formato "${ARQUIVOS[@]}"; echo '```'; } | tee -a "$GITHUB_STEP_SUMMARY"
+          if git diff --quiet -- public/img; then
+            echo "As imagens já estavam leves." | tee -a "$GITHUB_STEP_SUMMARY"
+            echo "mudou=nao" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          git add public/img
+          git commit -m "conteúdo: otimiza imagens enviadas"
+          # Se alguém salvou de novo no CMS enquanto isso, reaplica por cima e tenta outra vez
+          for tentativa in 1 2 3; do
+            git push origin "HEAD:${BRANCH}" && break
+            git pull --rebase origin "$BRANCH"
+          done
+          echo "mudou=sim" >> "$GITHUB_OUTPUT"
+
+  # O push acima é feito pelo próprio Actions e não dispara outros workflows; por isso o envio é chamado aqui.
+  enviar:
+    needs: otimizar
+    if: needs.otimizar.outputs.mudou == 'sim'
+    uses: ./.github/workflows/cloudflare.yml
+    with:
+      ref: ${{ github.ref_name }}
+    secrets: inherit

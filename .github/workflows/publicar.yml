@@ -56,6 +56,17 @@ jobs:
         if: steps.merge.outputs.novo == 'sim'
         run: |
           npm ci
+          # Segunda garantia: otimiza imagens que ainda estejam pesadas (ex.: publicadas antes de a
+          # otimização automática da branch conteudo terminar). Mesmo nome e formato; ver otimizar-imagens.yml.
+          # HEAD^1 é o main antes de juntar os rascunhos.
+          mapfile -t ARQUIVOS < <(git diff --name-only --diff-filter=AM HEAD^1 HEAD -- public/img | grep -iE '\.(jpe?g|png|webp)$' || true)
+          if [ ${#ARQUIVOS[@]} -gt 0 ]; then
+            node scripts/otimizar-imagens.mjs --manter-formato "${ARQUIVOS[@]}"
+            if ! git diff --quiet -- public/img; then
+              git add public/img
+              git commit -m "conteúdo: otimiza imagens enviadas"
+            fi
+          fi
           npm run build
 
       - name: Publicar

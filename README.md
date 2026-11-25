@@ -37,11 +37,18 @@ Histórias e cidades aceitam uma lista opcional `fotos` (imagem, legenda e descr
 
 As imagens do site antigo foram otimizadas por `scripts/otimizar-imagens.mjs`: lado maior de até 1600 px (sem ampliar as menores), rotação corrigida, sem metadados, em JPEG (mozjpeg, qualidade 80). Os GIFs de mapas e gravuras viraram PNG. A lista de origem → destino está em `scripts/migracao-acervo.json`.
 
+**Imagens enviadas pelo CMS são otimizadas sozinhas.** A cada push que muda `public/img`, o workflow `.github/workflows/otimizar-imagens.yml` otimiza só as imagens novas ou alteradas:
+- mantém nome e formato (JPEG, PNG ou WebP), então nenhum link quebra;
+- reduz para no máximo 1600 px, corrige a rotação e tira os metadados;
+- grava o resultado como "conteúdo: otimiza imagens enviadas" e atualiza a prévia ou o site.
+
+O "Publicar site" repete a verificação antes de publicar.
+
 ```bash
 # Refazer a migração a partir do espelho do site antigo
 node scripts/otimizar-imagens.mjs --manifesto scripts/migracao-acervo.json --origem <pasta site-atual>
-# Otimizar no lugar fotos grandes enviadas pelo CMS
-node scripts/otimizar-imagens.mjs public/img/fotos
+# O que a automação roda (mesmo nome e formato)
+node scripts/otimizar-imagens.mjs --manter-formato public/img/arquivo.jpg
 ```
 
 As páginas leem largura e altura de cada imagem no build (`src/utils/imagens.mjs`), para a página não "pular" enquanto as fotos carregam.

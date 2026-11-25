@@ -15,6 +15,10 @@
 //   2) Otimizar no lugar imagens já no repositório (por exemplo, fotos grandes enviadas pelo CMS):
 //      node scripts/otimizar-imagens.mjs public/img/fotos
 //      Só regrava o arquivo se ele passar de 1600 px ou se a nova versão ficar menor.
+//   3) Automático (GitHub Actions, imagens enviadas pelo Pages CMS):
+//      node scripts/otimizar-imagens.mjs --manter-formato <arquivos>...
+//      Mantém nome e formato de cada arquivo (JPEG, PNG ou WebP), para não quebrar nenhum link.
+//      GIFs são deixados como estão (podem ser animados).
 //
 // Opções: --lado 1600  --qualidade 80  --forcar (no modo 1, refaz arquivos que já existem)
 //
@@ -48,6 +52,7 @@ const QUALIDADE = Number(opt('qualidade', 80));
 const manifesto = opt('manifesto');
 const origem = opt('origem');
 const forcar = flag('forcar');
+const manterFormato = flag('manter-formato');
 const EXTENSOES = /\.(jpe?g|png|gif|tiff?|webp|bmp)$/i;
 
 sharp.cache(false);
@@ -121,6 +126,41 @@ async function listar(alvo) {
   return out;
 }
 
+/** Mesmo formato e mesmo nome: reduz para LADO e recomprime. Retorna null se não valer a pena. */
+async function otimizarMesmoFormato(arq) {
+  const fmt = (await sharp(arq, { failOn: 'none' }).metadata()).format;
+  const img = sharp(arq, { failOn: 'none', limitInputPixels: false }).rotate();
+  const meta = await img.metadata();
+  const grande = Math.max(meta.width ?? 0, meta.height ?? 0) > LADO;
+  let pipeline = img.resize({ width: LADO, height: LADO, fit: 'inside', withoutEnlargement: true }).toColorspace('srgb');
+  if (fmt === 'jpeg') pipeline = pipeline.jpeg({ quality: QUALIDADE, mozjpeg: true });
+  // PNG sem paleta (no sharp, effort/colors ligam a paleta de 256 cores): continua sem perda, só reduzido.
+  else if (fmt === 'png') pipeline = pipeline.png({ compressionLevel: 9, adaptiveFiltering: true });
+  else if (fmt === 'webp') pipeline = pipeline.webp({ quality: QUALIDADE, effort: 6 });
+  else return null; // gif, svg e outros: deixa como está
+  const { data, info } = await pipeline.toBuffer({ resolveWithObject: true });
+  const original = (await stat(arq)).size;
+  if (!grande && data.length >= original * 0.9) return null;
+  return { data, info, meta, original };
+}
+
+async function modoMesmoFormato(alvos) {
+  let antes = 0, depois = 0, mudados = 0;
+  const arquivos = (await Promise.all(alvos.filter(existsSync).map(listar))).flat();
+  for (const arq of arquivos) {
+    const original = (await stat(arq)).size;
+    antes += original;
+    const r = await otimizarMesmoFormato(arq);
+    if (!r) { depois += original; console.log(`${arq}  ${kb(original)} (já está bom)`); continue; }
+    const tmp = `${arq}.${createHash('md5').update(arq).digest('hex').slice(0, 6)}.tmp`;
+    await writeFile(tmp, r.data);
+    await rename(tmp, arq);
+    depois += r.data.length; mudados++;
+    console.log(`${arq}  ${r.meta.width}×${r.meta.height} ${kb(original)} → ${r.info.width}×${r.info.height} ${kb(r.data.length)}`);
+  }
+  console.log(`\n${arquivos.length} imagens verificadas, ${mudados} otimizadas. ${mb(antes)} → ${mb(depois)}.`);
+}
+
 async function modoNoLugar(alvos) {
   let antes = 0, depois = 0, mudados = 0;
   const arquivos = (await Promise.all(alvos.map(listar))).flat();
@@ -154,6 +194,7 @@ async function modoNoLugar(alvos) {
 }
 
 if (manifesto) await modoManifesto();
+else if (manterFormato) await modoMesmoFormato(args);
 else if (args.length) await modoNoLugar(args);
 else {
   console.log('Uso: node scripts/otimizar-imagens.mjs --manifesto <lista.json> --origem <pasta>');
