@@ -2,6 +2,19 @@
 # Cada item de "content" corresponde a uma coleção em src/content.config.ts.
 # Ao mudar um campo aqui, mude também lá (e vice-versa).
 
+# Botão "Publicar site": as alterações ficam salvas como rascunho na branch `conteudo`
+# e só vão para o site no ar quando alguém clica aqui (.github/workflows/publicar.yml).
+actions:
+  - name: publicar
+    label: Publicar site
+    workflow: publicar.yml
+    ref: main
+    cancelable: false
+    confirm:
+      title: Publicar o site?
+      message: "Todas as alterações salvas até agora vão para o site no ar em cerca de 2 minutos. O plano gratuito permite poucas publicações por mês: junte várias alterações antes de publicar."
+      button: Publicar
+
 media:
   input: public/img
   output: /img

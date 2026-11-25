@@ -33,9 +33,15 @@ Linguagem visual da Versão A (Editorial): tokens em `src/styles/global.css` e f
 
 ## Publicação e limite do plano Free
 
-- Cada push em `main` gera uma publicação de produção no Netlify. O plano Free dá 300 créditos por mês e **cada publicação consome 15 (≈ 20 publicações/mês)**. Ao esgotar, o site fica pausado até o mês seguinte.
-- **Desenvolvimento:** trabalhe numa branch e abra PR. Deploy previews e branch deploys não consomem créditos. Junte as mudanças antes de mesclar em `main`.
-- **CMS:** cada gravação no Pages CMS é um commit na branch aberta nele. Em `main`, isso é uma publicação. Antes de abrir o CMS para a família, definir como agrupar as publicações.
+O plano Free do Netlify dá 300 créditos por mês, e **cada publicação de produção consome 15 (≈ 20 por mês)**. Ao esgotar, o site fica pausado até o mês seguinte. Por isso:
+
+- **Branches:**
+  - `conteudo` (padrão no GitHub): rascunhos. O Pages CMS grava aqui. Cada push gera só uma prévia gratuita em https://conteudo--familia-camozzato.netlify.app
+  - `main`: site no ar. Cada push gera uma publicação.
+- **Botão "Publicar site" (Pages CMS):** dispara `.github/workflows/publicar.yml`, que junta `conteudo` em `main`, confere se o site compila e envia. É a única forma de a família publicar.
+- **Desenvolvimento:** trabalhe numa branch e abra PR **contra `main`** (`gh pr create --base main`). Ao mesclar, `.github/workflows/sincronizar-conteudo.yml` leva a mudança também para `conteudo`.
+- **Commits que não mudam o site** (README, `.pages.yml`, workflows) não geram publicação: veja o `ignore` em `netlify.toml`.
+- **Mudar a configuração do repositório no Netlify pela API dispara uma publicação sozinho.** Evite.
 
 ## Login no CMS (Pages CMS)
 
