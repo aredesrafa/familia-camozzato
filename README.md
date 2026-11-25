@@ -1,6 +1,6 @@
 # Família Camozzato — site
 
-Novo site de [familiacamozzato.com.br](https://familiacamozzato.com.br), em [Astro](https://astro.build), publicado no Netlify (time *Familia Camozzato*, plano Free) e com gestão de conteúdo pelo [Sveltia CMS](https://github.com/sveltia/sveltia-cms) em `/admin`.
+Novo site de [familiacamozzato.com.br](https://familiacamozzato.com.br), em [Astro](https://astro.build), publicado no Netlify (time *Familia Camozzato*, plano Free) e com gestão de conteúdo pelo [Pages CMS](https://pagescms.org) (configuração em `.pages.yml`).
 
 ## Rodar localmente
 
@@ -23,7 +23,7 @@ npm run build    # gera dist/
 | `src/content/marcos/` | Marcos da linha do tempo | Linha do tempo |
 | `public/img/` | Imagens enviadas pelo CMS | Mídia |
 
-Os campos de cada coleção estão em `src/content.config.ts` e espelhados em `public/admin/config.yml`. Ao mudar um, mude o outro.
+Os campos de cada coleção estão em `src/content.config.ts` e espelhados em `.pages.yml`. Ao mudar um, mude o outro.
 
 O conteúdo inicial foi gerado a partir da extração do site antigo (pasta do projeto no Dropbox, `conteudo-extraido/`).
 
@@ -35,11 +35,11 @@ Linguagem visual da Versão A (Editorial): tokens em `src/styles/global.css` e f
 
 - Cada push em `main` gera uma publicação de produção no Netlify. O plano Free dá 300 créditos por mês e **cada publicação consome 15 (≈ 20 publicações/mês)**. Ao esgotar, o site fica pausado até o mês seguinte.
 - **Desenvolvimento:** trabalhe numa branch e abra PR. Deploy previews e branch deploys não consomem créditos. Junte as mudanças antes de mesclar em `main`.
-- **CMS:** cada gravação no `/admin` é um commit em `main`, ou seja, uma publicação. Antes de abrir o CMS para a família, definir como agrupar as publicações.
+- **CMS:** cada gravação no Pages CMS é um commit na branch aberta nele. Em `main`, isso é uma publicação. Antes de abrir o CMS para a família, definir como agrupar as publicações.
 
-## Login no CMS
+## Login no CMS (Pages CMS)
 
-O backend é GitHub. Cada editor precisa de uma conta GitHub com acesso de escrita a este repositório.
+A edição é feita em https://app.pagescms.org, não no próprio site.
 
-- **Agora:** em `/admin`, entrar com um *personal access token* do GitHub (opção "Sign In with Token").
-- **Para a família:** criar um GitHub OAuth App (callback `https://api.netlify.com/auth/done`) e cadastrar o Client ID e o Secret no Netlify, em *Project configuration › Access & security › OAuth*. Aí o botão "Sign In with GitHub" passa a funcionar.
+- **Administrador (GitHub):** entra com a conta GitHub que tem acesso a este repositório. O app do Pages CMS precisa estar instalado no repositório.
+- **Família (sem GitHub):** é convidada por e-mail em *Settings › Collaborators* dentro do Pages CMS e entra por um link enviado ao e-mail. Colaboradores editam conteúdo e imagens, mas não a configuração.

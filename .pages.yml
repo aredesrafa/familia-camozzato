@@ -1,0 +1,125 @@
+# Configuração do Pages CMS (https://pagescms.org).
+# Cada item de "content" corresponde a uma coleção em src/content.config.ts.
+# Ao mudar um campo aqui, mude também lá (e vice-versa).
+
+media:
+  input: public/img
+  output: /img
+  rename: safe
+  extensions: [jpg, jpeg, png, webp, gif]
+
+content:
+  - name: home
+    label: Página inicial
+    type: file
+    path: src/data/home.json
+    format: json
+    fields:
+      - { name: hero_titulo, label: Título principal, type: string, required: true }
+      - { name: hero_texto, label: Texto de abertura, type: text, required: true }
+      - { name: hero_imagem, label: Foto principal, type: image, required: true }
+      - { name: hero_imagem_alt, label: Descrição da foto, type: text, description: "Para quem usa leitor de tela. Descreva o que aparece na foto." }
+      - { name: hero_legenda, label: Legenda da foto, type: string }
+      - name: numeros
+        label: Números
+        type: object
+        list: true
+        fields:
+          - { name: valor, label: Valor, type: string }
+          - { name: rotulo, label: Descrição, type: string }
+      - { name: arvore_titulo, label: Árvore — título, type: string }
+      - { name: arvore_texto, label: Árvore — texto, type: text }
+      - { name: livro_titulo, label: Livro — título, type: string }
+      - { name: livro_texto, label: Livro — texto, type: text }
+      - { name: livro_capa, label: Livro — capa, type: image }
+      - { name: contribua_titulo, label: Contribua — título, type: string }
+      - { name: contribua_texto, label: Contribua — texto, type: text }
+      - { name: email, label: E-mail de contato, type: string }
+
+  - name: historias
+    label: Histórias
+    type: collection
+    path: src/content/historias
+    format: yaml-frontmatter
+    filename:
+      template: "{primary}.md"
+      field: create
+    view:
+      fields: [titulo, pessoa, destaque]
+      primary: titulo
+      sort: [ordem, titulo]
+      default: { sort: ordem, order: asc }
+    fields:
+      - { name: titulo, label: Título, type: string, required: true }
+      - { name: pessoa, label: Pessoa, type: string }
+      - { name: periodo, label: Data ou período, type: string, description: "Ex.: 1904 – 1908, ou Sananduva" }
+      - { name: resumo, label: Resumo, type: text, required: true, description: "Aparece nos cartões da página inicial e da lista de histórias." }
+      - { name: imagem, label: Imagem, type: image }
+      - { name: imagem_alt, label: Descrição da imagem, type: text }
+      - { name: ordem, label: Ordem, type: number, default: 99 }
+      - { name: destaque, label: Mostrar na página inicial, type: boolean, default: false }
+      - { name: body, label: Texto, type: rich-text, options: { format: markdown } }
+
+  - name: cidades
+    label: Lugares
+    type: collection
+    path: src/content/cidades
+    format: yaml-frontmatter
+    filename:
+      template: "{primary}.md"
+      field: create
+    view:
+      fields: [nome, regiao]
+      primary: nome
+      sort: [ordem, nome]
+      default: { sort: ordem, order: asc }
+    fields:
+      - { name: nome, label: Nome, type: string, required: true }
+      - { name: regiao, label: Estado ou país, type: string, required: true }
+      - { name: ordem, label: Ordem, type: number, default: 99 }
+      - { name: resumo, label: Resumo, type: text, required: true }
+      - { name: imagem, label: Imagem, type: image }
+      - { name: imagem_alt, label: Descrição da imagem, type: text }
+      - { name: body, label: Texto, type: rich-text, options: { format: markdown } }
+
+  - name: nucleos
+    label: Núcleos imigrantes
+    type: collection
+    path: src/content/nucleos
+    format: yaml-frontmatter
+    filename:
+      template: "{primary}.md"
+      field: create
+    view:
+      fields: [titulo, lugares]
+      primary: titulo
+      sort: [ordem, titulo]
+      default: { sort: ordem, order: asc }
+    fields:
+      - { name: titulo, label: Título, type: string, required: true }
+      - { name: lugares, label: Lugares, type: string, required: true }
+      - { name: grafia, label: Grafia do sobrenome (se diferente), type: string }
+      - { name: ordem, label: Ordem, type: number, default: 99 }
+      - { name: raiz, label: Casal de origem, type: string, required: true }
+      - { name: body, label: Texto, type: text }
+
+  - name: marcos
+    label: Linha do tempo
+    type: collection
+    path: src/content/marcos
+    format: yaml
+    filename:
+      template: "{ano}-{primary}.yml"
+      field: create
+    view:
+      fields: [data, titulo, home]
+      primary: titulo
+      sort: [ano, titulo]
+      default: { sort: ano, order: asc }
+    fields:
+      - { name: ano, label: Ano, type: number, required: true }
+      - { name: mes, label: Mês, type: number, options: { min: 1, max: 12 }, description: "Opcional. Usado só para ordenar marcos do mesmo ano (1 a 12)." }
+      - { name: data, label: Data como aparece no site, type: string, required: true, description: "Ex.: 12 jan 1880, c. 1915, 1888 – 1889" }
+      - { name: titulo, label: Título, type: string, required: true }
+      - { name: descricao, label: Descrição, type: text, required: true }
+      - { name: home, label: Mostrar na página inicial, type: boolean, default: false }
