@@ -1,6 +1,6 @@
 # Família Camozzato — site
 
-Novo site de [familiacamozzato.com.br](https://familiacamozzato.com.br), em [Astro](https://astro.build), publicado no Netlify (time *Familia Camozzato*, plano Free) e com gestão de conteúdo pelo [Pages CMS](https://pagescms.org) (configuração em `.pages.yml`).
+Novo site de [familiacamozzato.com.br](https://familiacamozzato.com.br), em [Astro](https://astro.build), publicado no [Cloudflare Pages](https://pages.cloudflare.com) (plano gratuito) e com gestão de conteúdo pelo [Pages CMS](https://pagescms.org) (configuração em `.pages.yml`).
 
 ## Rodar localmente
 
@@ -31,17 +31,18 @@ O conteúdo inicial foi gerado a partir da extração do site antigo (pasta do p
 
 Linguagem visual da Versão A (Editorial): tokens em `src/styles/global.css` e fonte (Source Serif 4) em `src/layouts/Base.astro`.
 
-## Publicação e limite do plano Free
+## Publicação
 
-O plano Free do Netlify dá 300 créditos por mês, e **cada publicação de produção consome 15 (≈ 20 por mês)**. Ao esgotar, o site fica pausado até o mês seguinte. Por isso:
+Hospedagem no Cloudflare Pages, projeto `familia-camozzato`, ligado a este repositório. O plano gratuito tem 500 builds por mês, tráfego ilimitado e nenhum selo.
 
 - **Branches:**
-  - `conteudo` (padrão no GitHub): rascunhos. O Pages CMS grava aqui. Cada push gera só uma prévia gratuita em https://conteudo--familia-camozzato.netlify.app
-  - `main`: site no ar. Cada push gera uma publicação.
-- **Botão "Publicar site" (Pages CMS):** dispara `.github/workflows/publicar.yml`, que junta `conteudo` em `main`, confere se o site compila e envia. É a única forma de a família publicar.
+  - `conteudo` (padrão no GitHub): rascunhos. O Pages CMS grava aqui. Cada push gera uma prévia em https://conteudo.familia-camozzato.pages.dev
+  - `main`: site no ar, em https://familia-camozzato.pages.dev
+- **Botão "Publicar site" (Pages CMS):** dispara `.github/workflows/publicar.yml`, que junta `conteudo` em `main`, confere se o site compila e envia. Assim a família publica tudo de uma vez, depois de revisar a prévia.
 - **Desenvolvimento:** trabalhe numa branch e abra PR **contra `main`** (`gh pr create --base main`). Ao mesclar, `.github/workflows/sincronizar-conteudo.yml` leva a mudança também para `conteudo`.
-- **Commits que não mudam o site** (README, `.pages.yml`, workflows) não geram publicação: veja o `ignore` em `netlify.toml`.
-- **Mudar a configuração do repositório no Netlify pela API dispara uma publicação sozinho.** Evite.
+- **Redirecionamentos** dos endereços do site antigo: `public/_redirects`.
+- **Node:** a versão vem do `.nvmrc`.
+- `netlify.toml` é da hospedagem anterior (Netlify). Pode ser apagado quando o projeto no Netlify for desligado.
 
 ## Login no CMS (Pages CMS)
 

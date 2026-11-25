@@ -1,0 +1,13 @@
+# Endereços do site antigo (FrontPage) → novas páginas (formato Cloudflare Pages).
+# Só passam a valer quando o domínio familiacamozzato.com.br apontar para este site.
+/pagina_principal.htm / 301
+/destaques.htm /historias/ 301
+/cidades_importantes/cidades_importantes.htm /cidades/ 301
+/cidades_importantes/montebelluna.htm /cidades/montebelluna/ 301
+/cidades_importantes/antonioprado.htm /cidades/antonio-prado/ 301
+/cidades_importantes/sananduva.htm /cidades/sananduva/ 301
+/cidades_importantes/lagoavermelha.htm /cidades/lagoa-vermelha/ 301
+/cidades_importantes/passofundo.htm /cidades/passo-fundo/ 301
+/cidades_importantes/portoalegre.htm /cidades/porto-alegre/ 301
+/cidades_importantes/cacador.htm /cidades/cacador/ 301
+/cidades_importantes/patobranco.htm /cidades/pato-branco/ 301
