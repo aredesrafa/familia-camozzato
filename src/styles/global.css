@@ -47,8 +47,9 @@ figcaption { font-size: 13px; color: var(--ink-mute); padding: 10px 2px 0; line-
 
 .band { border-top: 1px solid var(--line); }
 .paper { background: var(--paper); }
-.block { padding: 56px 0; }
-@media (min-width: 768px) { .block { padding: 72px 0; } }
+/* Só vertical: .block costuma vir junto com .wrap, que cuida das margens laterais. */
+.block { padding-top: 56px; padding-bottom: 56px; }
+@media (min-width: 768px) { .block { padding-top: 72px; padding-bottom: 72px; } }
 .head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin-bottom: 28px; flex-wrap: wrap; }
 
 /* Cabeçalho de página interna */
