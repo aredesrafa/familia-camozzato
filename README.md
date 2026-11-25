@@ -33,6 +33,10 @@ O conteúdo inicial foi gerado a partir da extração do site antigo (pasta do p
 
 Histórias e cidades aceitam uma lista opcional `fotos` (imagem, legenda e descrição), mostrada abaixo do texto com ampliação ao clicar.
 
+## Livro digital (Idos Tempos)
+
+O EPUB e o PDF ficam em `public/livro/` e aparecem em `/livro/`, na página inicial e na história de José (campo `livro: true`). Eles são gerados fora deste repositório, no projeto do Dropbox (`site-atual/livrojosecamozzato/ebook/scripts/build.sh`), que grava em `livro-digital/`. Para atualizar, copie os dois arquivos de lá para `public/livro/` com os mesmos nomes.
+
 ## Imagens
 
 As imagens do site antigo foram otimizadas por `scripts/otimizar-imagens.mjs`: lado maior de até 1600 px (sem ampliar as menores), rotação corrigida, sem metadados, em JPEG (mozjpeg, qualidade 80). Os GIFs de mapas e gravuras viraram PNG. A lista de origem → destino está em `scripts/migracao-acervo.json`.

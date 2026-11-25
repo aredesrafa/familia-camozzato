@@ -1,0 +1,47 @@
+---
+// Botões de download do livro "Idos Tempos" (EPUB e PDF em public/livro/).
+// O tamanho de cada arquivo é lido no build. Para atualizar o livro, troque os arquivos em
+// public/livro/ (gerados em livro-digital/ pelo scripts/build.sh do e-book) — ver README.
+import { statSync } from 'node:fs';
+
+interface Props { variante?: 'botoes' | 'caixa' }
+const { variante = 'botoes' } = Astro.props;
+
+const tamanho = (arq: string) => {
+  try { return `${(statSync(`public/livro/${arq}`).size / 1024 / 1024).toFixed(1).replace('.', ',')} MB`; }
+  catch { return ''; }
+};
+const formatos = [
+  { arq: 'idos-tempos.epub', rotulo: 'E-book (EPUB)', dica: 'Celular, Kindle, Kobo, Apple Books', tipo: 'application/epub+zip' },
+  { arq: 'idos-tempos.pdf', rotulo: 'PDF', dica: 'Computador, impressão', tipo: 'application/pdf' },
+].map((f) => ({ ...f, tamanho: tamanho(f.arq) }));
+---
+<div class:list={['livro-downloads', variante]}>
+  {variante === 'caixa' && (
+    <div class="texto">
+      <p class="eyebrow">Livro digital</p>
+      <p class="titulo">Idos Tempos — Memórias de José Camozzato</p>
+      <p class="meta">Edição digital do livro de 1986, com a grafia original. <a class="link" href="/livro/">Sobre o livro</a></p>
+    </div>
+  )}
+  <div class="botoes">
+    {formatos.map((f, i) => (
+      <a class:list={['btn', i === 0 ? 'btn-primary' : 'btn-outline']} href={`/livro/${f.arq}`} download type={f.tipo}>
+        <span>Baixar {f.rotulo}</span>
+        <small>{f.dica}{f.tamanho && ` · ${f.tamanho}`}</small>
+      </a>
+    ))}
+  </div>
+</div>
+
+<style>
+  .botoes { display: flex; flex-wrap: wrap; gap: 12px 16px; }
+  .btn { flex-direction: column; align-items: flex-start; gap: 2px; line-height: 1.25; }
+  .btn small { font-size: 13px; opacity: .8; }
+  /* Dentro de textos (.prose a) a cor dos links não pode vencer a dos botões */
+  .btn-primary, .btn-primary:hover { color: var(--cream); text-decoration: none; }
+  .btn-outline { color: var(--navy); text-decoration: none; }
+  .btn-outline:hover { color: var(--cream); }
+  .caixa { display: grid; gap: 18px; background: var(--paper); border: 1px solid var(--line); border-radius: 8px; padding: 22px 24px; margin: 8px 0 24px; max-width: 40em; }
+  .caixa .titulo { font-size: 21px; color: var(--navy); margin: 4px 0; }
+</style>

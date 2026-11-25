@@ -30,3 +30,7 @@
 /fotos_individuais/fotos_individuais.htm /fotos/individuais/ 301
 /fotos_diversas/fotos_diversas.htm /fotos/diversas/ 301
 /lembrancas_falecimento/lembrancas_falecimentos.htm /fotos/lembrancas-de-falecimento/ 301
+# Livro de José Camozzato (páginas digitalizadas e PDF escaneado) → página do livro digital
+/livrojosecamozzato/parte1.htm /livro/ 301
+/livrojosecamozzato/livro.pdf /livro/ 301
+/livrojosecamozzato/livro.pdf.pdf /livro/ 301
